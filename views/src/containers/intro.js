@@ -9,14 +9,14 @@ class Intro extends Component {
     render() {
         const {fields: {password}, handleSubmit} = this.props;
         return(
-            <div>
+            <div className="col-md-8 offset-xs-2">
                 <form className="form-inline" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                     <div className="form-group">
                         <label className="sr-only">Password</label>
                         <input type="password" className="form-control" placeholder="Password" {...password}/>
                         {password.touched && password.error && <div className="form-control-feedback">{password.error}</div>}
                     </div>
-                    <button type="submit" className="btn btn-primary">Enter</button>
+                    <button type="submit" className="btn btn-primary">Next</button>
                 </form>
             </div>
         )

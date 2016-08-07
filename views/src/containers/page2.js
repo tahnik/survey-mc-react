@@ -72,7 +72,7 @@ class Page2 extends Component {
                     </div>
                     { affliation.value == "Other" ? <div className="form-group"><label>Please specify</label><textarea className="form-control" rows="3" { ...specificDetails }></textarea></div> : <div></div> }
                     {affliation.touched && affliation.error && <div className="form-control-feedback">{affliation.error}</div>}
-                    <button type="submit" className="btn btn-primary">Enter</button>
+                    <button type="submit" className="btn btn-primary">Next</button>
                 </form>
             </div>
         )

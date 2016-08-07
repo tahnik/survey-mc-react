@@ -483,7 +483,7 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { className: 'col-md-8 offset-xs-2' },
 	                _react2.default.createElement(
 	                    'form',
 	                    { className: 'form-inline', onSubmit: handleSubmit(function (e) {
@@ -507,7 +507,7 @@
 	                    _react2.default.createElement(
 	                        'button',
 	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Enter'
+	                        'Next'
 	                    )
 	                )
 	            );
@@ -640,7 +640,7 @@
 	          _react2.default.createElement(
 	            'button',
 	            { type: 'submit', className: 'btn btn-primary' },
-	            'Enter'
+	            'Next'
 	          )
 	        )
 	      );
@@ -867,7 +867,7 @@
 	          _react2.default.createElement(
 	            'button',
 	            { type: 'submit', className: 'btn btn-primary' },
-	            'Enter'
+	            'Next'
 	          )
 	        )
 	      );
@@ -972,7 +972,7 @@
 	                _react2.default.createElement(
 	                    'h3',
 	                    null,
-	                    'Are you?'
+	                    'What is your role?'
 	                ),
 	                _react2.default.createElement(
 	                    'form',
@@ -1014,7 +1014,7 @@
 	                    _react2.default.createElement(
 	                        'button',
 	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Enter'
+	                        'Next'
 	                    )
 	                )
 	            );
@@ -1062,11 +1062,17 @@
 	    value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(6);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reduxForm = __webpack_require__(25);
+
+	var _page_actions = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1075,6 +1081,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TENURE = ['0-12 months', '1-2 years', '2-5 years', '>5 years'];
 
 	var Page4 = function (_Component) {
 	    _inherits(Page4, _Component);
@@ -1086,15 +1094,54 @@
 	    }
 
 	    _createClass(Page4, [{
+	        key: 'onSubmit',
+	        value: function onSubmit(e) {
+	            this.props.page4Submit(e);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
+	            var _props = this.props;
+	            var tenure = _props.fields.tenure;
+	            var handleSubmit = _props.handleSubmit;
+
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { className: 'col-md-8 offset-xs-2' },
 	                _react2.default.createElement(
-	                    'h1',
+	                    'h3',
 	                    null,
-	                    'Page 4'
+	                    'Are you?'
+	                ),
+	                _react2.default.createElement(
+	                    'form',
+	                    { className: 'form', onSubmit: handleSubmit(function (e) {
+	                            return _this2.onSubmit(e);
+	                        }) },
+	                    TENURE.map(function (e) {
+	                        return _react2.default.createElement(
+	                            'div',
+	                            { className: 'form-check' },
+	                            _react2.default.createElement(
+	                                'label',
+	                                { className: 'form-check-label' },
+	                                _react2.default.createElement('input', _extends({}, tenure, { className: 'form-check-input', type: 'radio', value: e })),
+	                                e
+	                            )
+	                        );
+	                    }),
+	                    tenure.touched && tenure.error && _react2.default.createElement(
+	                        'div',
+	                        { className: 'form-control-feedback' },
+	                        tenure.error
+	                    ),
+	                    _react2.default.createElement(
+	                        'button',
+	                        { type: 'submit', className: 'btn btn-primary' },
+	                        'Next'
+	                    )
 	                )
 	            );
 	        }
@@ -1103,7 +1150,21 @@
 	    return Page4;
 	}(_react.Component);
 
-	exports.default = Page4;
+	function validate(formProps) {
+	    var errors = {};
+
+	    if (!formProps.tenure) {
+	        errors.tenure = 'Please select a choice';
+	    }
+
+	    return errors;
+	}
+
+	exports.default = (0, _reduxForm.reduxForm)({
+	    form: 'Page4',
+	    fields: ['tenure'],
+	    validate: validate
+	}, null, { page4Submit: _page_actions.page4Submit })(Page4);
 
 /***/ },
 /* 13 */
@@ -1115,11 +1176,17 @@
 	    value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(6);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reduxForm = __webpack_require__(25);
+
+	var _page_actions = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1128,6 +1195,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var USUAL_WORKSPACE = ['Assigned desk in office', 'Assigned desk, open plan', 'Hot desk', 'Meeting room/ team room', 'Informal meet area', 'Monk cells'];
 
 	var Page5 = function (_Component) {
 	    _inherits(Page5, _Component);
@@ -1139,15 +1208,54 @@
 	    }
 
 	    _createClass(Page5, [{
+	        key: 'onSubmit',
+	        value: function onSubmit(e) {
+	            this.props.page5Submit(e);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
+	            var _props = this.props;
+	            var usualWorkspace = _props.fields.usualWorkspace;
+	            var handleSubmit = _props.handleSubmit;
+
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { className: 'col-md-8 offset-xs-2' },
 	                _react2.default.createElement(
-	                    'h1',
+	                    'h3',
 	                    null,
-	                    'Page 5'
+	                    'What is your usual workspace in London office?'
+	                ),
+	                _react2.default.createElement(
+	                    'form',
+	                    { className: 'form', onSubmit: handleSubmit(function (e) {
+	                            return _this2.onSubmit(e);
+	                        }) },
+	                    USUAL_WORKSPACE.map(function (e) {
+	                        return _react2.default.createElement(
+	                            'div',
+	                            { className: 'form-check' },
+	                            _react2.default.createElement(
+	                                'label',
+	                                { className: 'form-check-label' },
+	                                _react2.default.createElement('input', _extends({}, usualWorkspace, { className: 'form-check-input', type: 'radio', value: e })),
+	                                e
+	                            )
+	                        );
+	                    }),
+	                    usualWorkspace.touched && usualWorkspace.error && _react2.default.createElement(
+	                        'div',
+	                        { className: 'form-control-feedback' },
+	                        usualWorkspace.error
+	                    ),
+	                    _react2.default.createElement(
+	                        'button',
+	                        { type: 'submit', className: 'btn btn-primary' },
+	                        'Next'
+	                    )
 	                )
 	            );
 	        }
@@ -1156,7 +1264,21 @@
 	    return Page5;
 	}(_react.Component);
 
-	exports.default = Page5;
+	function validate(formProps) {
+	    var errors = {};
+
+	    if (!formProps.usualWorkspace) {
+	        errors.usualWorkspace = 'Please select a choice';
+	    }
+
+	    return errors;
+	}
+
+	exports.default = (0, _reduxForm.reduxForm)({
+	    form: 'Page5',
+	    fields: ['usualWorkspace'],
+	    validate: validate
+	}, null, { page5Submit: _page_actions.page5Submit })(Page5);
 
 /***/ },
 /* 14 */
@@ -1168,11 +1290,17 @@
 	    value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(6);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reduxForm = __webpack_require__(25);
+
+	var _page_actions = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1192,15 +1320,131 @@
 	    }
 
 	    _createClass(Page6, [{
+	        key: 'onSubmit',
+	        value: function onSubmit(e) {
+	            console.log(this.props.fields.satisfiedLondon);
+	            this.props.page6Submit(e);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
+	            var S = [{ name: 'Fully Satisfied', value: 'FUSA' }, { name: 'Satisfied', value: 'SA' }, { name: 'Neither satisfied nor dissatisfied', value: 'NSND' }, { name: 'Dissatisfied', value: 'DI' }, { name: 'Fully Dissatisfied', value: 'FD' }];
+
+	            var E = [{ name: 'Very poor', value: 'VP' }, { name: 'Poor', value: 'PO' }, { name: 'Neither good nor bad', value: 'NGNB' }, { name: 'Good', value: 'GO' }, { name: 'Excellent', value: 'EX' }];
+
+	            var A = [{ name: 'Strongly Agree', value: 'STA' }, { name: 'Agree', value: 'AG' }, { name: 'Neither Agree nor Disagree', value: 'NAND' }, { name: 'Disagree', value: 'DA' }, { name: 'Strongly Disagree', value: 'SDA' }];
+
+	            var SATISFACTION = [{ Q: 'How satisfied are you with London office?', fieldValue: this.props.fields.satisfiedLondon, selectionType: 'S' }, { Q: 'What gets the best out of you in London office?', fieldValue: this.props.fields.bestOutOfLondonOffice, selectionType: 'FT' }, { Q: 'What would you change about the office?', fieldValue: this.props.fields.changeAboutOffice, selectionType: 'FT' }, { Q: 'The variety of workspaces available?', fieldValue: this.props.fields.workspaceVariety, selectionType: 'E' }, { Q: 'The lighting?', fieldValue: this.props.fields.lighting, selectionType: 'E' }, { Q: 'The air quality?', fieldValue: this.props.fields.airQuality, selectionType: 'E' }, { Q: 'The noise levels?', fieldValue: this.props.fields.noiseLevel, selectionType: 'E' }, { Q: 'The furniture/ergonomics/comfort?', fieldValue: this.props.fields.furniture, selectionType: 'E' }, { Q: 'The informal breakout and social spaces?', fieldValue: this.props.fields.informalBreakout, selectionType: 'E' }, { Q: 'The availability and choice of workspace?', fieldValue: this.props.fields.choiceOfWorkspace, selectionType: 'E' }, { Q: 'The showers/changing /cycling facilities?', fieldValue: this.props.fields.showers, selectionType: 'E' }, { Q: 'The design of the current office  space creates an enjoyable environment to work in', fieldValue: this.props.fields.designOfCurrentOffice, selectionType: 'A' }, { Q: 'The design of the office enables me to work productively and supports my daily tasks', fieldValue: this.props.fields.designOfCurrentOfficeProductivity, selectionType: 'A' }, { Q: 'The design of the office promotes movement', fieldValue: this.props.fields.promotesMovement, selectionType: 'A' }, { Q: 'I am proud to bring visitors to the office', fieldValue: this.props.fields.proudVisitors, selectionType: 'A' }, { Q: 'I am able to access spaces with good natural light.', fieldValue: this.props.fields.naturalLight, selectionType: 'A' }, { Q: 'My current office space supports my physical wellbeing', fieldValue: this.props.fields.physicalWellbeing, selectionType: 'A' }];
+	            console.log(this.props.fields.satisfiedLondon);
+	            var _props = this.props;
+	            var _props$fields = _props.fields;
+	            var satisfiedLondon = _props$fields.satisfiedLondon;
+	            var bestOutOfLondonOffice = _props$fields.bestOutOfLondonOffice;
+	            var changeAboutOffice = _props$fields.changeAboutOffice;
+	            var workspaceVariety = _props$fields.workspaceVariety;
+	            var lighting = _props$fields.lighting;
+	            var airQuality = _props$fields.airQuality;
+	            var noiseLevel = _props$fields.noiseLevel;
+	            var furniture = _props$fields.furniture;
+	            var informalBreakout = _props$fields.informalBreakout;
+	            var choiceOfWorkspace = _props$fields.choiceOfWorkspace;
+	            var showers = _props$fields.showers;
+	            var designOfCurrentOffice = _props$fields.designOfCurrentOffice;
+	            var designOfCurrentOfficeProductivity = _props$fields.designOfCurrentOfficeProductivity;
+	            var promotesMovement = _props$fields.promotesMovement;
+	            var proudVisitors = _props$fields.proudVisitors;
+	            var naturalLight = _props$fields.naturalLight;
+	            var physicalWellbeing = _props$fields.physicalWellbeing;
+	            var handleSubmit = _props.handleSubmit;
+
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { className: 'col-md-8 offset-xs-2' },
 	                _react2.default.createElement(
-	                    'h1',
+	                    'h3',
 	                    null,
-	                    'Page 6'
+	                    'Satisfaction'
+	                ),
+	                _react2.default.createElement(
+	                    'form',
+	                    { className: 'form', onSubmit: handleSubmit(function (e) {
+	                            return _this2.onSubmit(e);
+	                        }) },
+	                    SATISFACTION.map(function (e) {
+	                        if (e.selectionType == 'S') {
+	                            return _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                e.Q,
+	                                S.map(function (v) {
+	                                    return _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'form-check' },
+	                                        _react2.default.createElement(
+	                                            'label',
+	                                            { className: 'form-check-label' },
+	                                            _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
+	                                            v.name
+	                                        )
+	                                    );
+	                                })
+	                            );
+	                        } else if (e.selectionType == 'E') {
+	                            return _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                e.Q,
+	                                E.map(function (v) {
+	                                    return _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'form-check' },
+	                                        _react2.default.createElement(
+	                                            'label',
+	                                            { className: 'form-check-label' },
+	                                            _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
+	                                            v.name
+	                                        )
+	                                    );
+	                                })
+	                            );
+	                        } else if (e.selectionType == 'A') {
+	                            return _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                e.Q,
+	                                A.map(function (v) {
+	                                    return _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'form-check' },
+	                                        _react2.default.createElement(
+	                                            'label',
+	                                            { className: 'form-check-label' },
+	                                            _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
+	                                            v.name
+	                                        )
+	                                    );
+	                                })
+	                            );
+	                        } else if (e.selectionType == 'FT') {
+	                            return _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                e.Q,
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'form-group' },
+	                                    _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, e.fieldValue))
+	                                )
+	                            );
+	                        }
+	                    }),
+	                    _react2.default.createElement(
+	                        'button',
+	                        { type: 'submit', className: 'btn btn-primary' },
+	                        'Next'
+	                    )
 	                )
 	            );
 	        }
@@ -1209,7 +1453,17 @@
 	    return Page6;
 	}(_react.Component);
 
-	exports.default = Page6;
+	function validate(formProps) {
+	    var errors = {};
+
+	    return errors;
+	}
+
+	exports.default = (0, _reduxForm.reduxForm)({
+	    form: 'Page6',
+	    fields: ['satisfiedLondon', 'bestOutOfLondonOffice', 'changeAboutOffice', 'workspaceVariety', 'lighting', 'airQuality', 'noiseLevel', 'furniture', 'informalBreakout', 'choiceOfWorkspace', 'showers', 'designOfCurrentOffice', 'designOfCurrentOfficeProductivity', 'promotesMovement', 'proudVisitors', 'naturalLight', 'physicalWellbeing'],
+	    validate: validate
+	}, null, { page6Submit: _page_actions.page6Submit })(Page6);
 
 /***/ },
 /* 15 */
@@ -1218,14 +1472,20 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(6);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reduxForm = __webpack_require__(25);
+
+	var _page_actions = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1235,34 +1495,105 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Page7 = function (_Component) {
-	    _inherits(Page7, _Component);
+	var Page1 = function (_Component) {
+	  _inherits(Page1, _Component);
 
-	    function Page7() {
-	        _classCallCheck(this, Page7);
+	  function Page1() {
+	    _classCallCheck(this, Page1);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page7).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Page1).apply(this, arguments));
+	  }
+
+	  _createClass(Page1, [{
+	    key: 'onSubmit',
+	    value: function onSubmit(e) {
+	      this.props.page7Submit(e);
 	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
 
-	    _createClass(Page7, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Page 7'
-	                )
-	            );
-	        }
-	    }]);
+	      var _props = this.props;
+	      var whatAreYou = _props.fields.whatAreYou;
+	      var handleSubmit = _props.handleSubmit;
 
-	    return Page7;
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-md-8 offset-xs-2' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Are you?'
+	        ),
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form', onSubmit: handleSubmit(function (e) {
+	              return _this2.onSubmit(e);
+	            }) },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-check' },
+	            _react2.default.createElement(
+	              'label',
+	              { className: 'form-check-label' },
+	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSS', checked: whatAreYou.value === 'CSS' })),
+	              'CSS'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-check' },
+	            _react2.default.createElement(
+	              'label',
+	              { className: 'form-check-label' },
+	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSSS', checked: whatAreYou.value === 'CSSS' })),
+	              'CSSS'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-check' },
+	            _react2.default.createElement(
+	              'label',
+	              { className: 'form-check-label' },
+	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSSA', checked: whatAreYou.value === 'CSSA' })),
+	              'CSSA'
+	            )
+	          ),
+	          whatAreYou.touched && whatAreYou.error && _react2.default.createElement(
+	            'div',
+	            { className: 'form-control-feedback' },
+	            whatAreYou.error
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit', className: 'btn btn-primary' },
+	            'Next'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Page1;
 	}(_react.Component);
 
-	exports.default = Page7;
+	function validate(formProps) {
+	  var errors = {};
+
+	  if (!formProps.whatAreYou) {
+	    errors.whatAreYou = 'Please select a choice';
+	  }
+
+	  return errors;
+	}
+
+	exports.default = (0, _reduxForm.reduxForm)({
+	  form: 'Page1',
+	  fields: ['whatAreYou'],
+	  validate: validate
+	}, null, { page7Submit: _page_actions.page7Submit })(Page1);
 
 /***/ },
 /* 16 */
@@ -1637,6 +1968,18 @@
 	        case "PAGE_2":
 	            console.log(state);
 	            return _extends({}, state, { page2: action.payload });
+	        case "PAGE_3":
+	            console.log(state);
+	            return _extends({}, state, { page3: action.payload });
+	        case "PAGE_4":
+	            console.log(state);
+	            return _extends({}, state, { page4: action.payload });
+	        case "PAGE_5":
+	            console.log(state);
+	            return _extends({}, state, { page5: action.payload });
+	        case "PAGE_6":
+	            console.log(action.payload);
+	            return _extends({}, state, { page6: action.payload });
 	    }
 	    return state;
 	}
@@ -1671,6 +2014,10 @@
 	exports.Signin = Signin;
 	exports.page1Submit = page1Submit;
 	exports.page2Submit = page2Submit;
+	exports.page3Submit = page3Submit;
+	exports.page4Submit = page4Submit;
+	exports.page5Submit = page5Submit;
+	exports.page6Submit = page6Submit;
 
 	var _reactRouter = __webpack_require__(4);
 
@@ -1683,6 +2030,7 @@
 	}
 
 	function page1Submit(props) {
+	    _reactRouter.browserHistory.push('/page2');
 	    return {
 	        type: "PAGE_1",
 	        payload: props
@@ -1690,8 +2038,46 @@
 	}
 
 	function page2Submit(props) {
+	    _reactRouter.browserHistory.push('/page3');
+
 	    return {
 	        type: "PAGE_2",
+	        payload: props
+	    };
+	}
+
+	function page3Submit(props) {
+	    _reactRouter.browserHistory.push('/page4');
+
+	    return {
+	        type: "PAGE_3",
+	        payload: props
+	    };
+	}
+
+	function page4Submit(props) {
+	    _reactRouter.browserHistory.push('/page5');
+
+	    return {
+	        type: "PAGE_4",
+	        payload: props
+	    };
+	}
+
+	function page5Submit(props) {
+	    _reactRouter.browserHistory.push('/page6');
+
+	    return {
+	        type: "PAGE_5",
+	        payload: props
+	    };
+	}
+
+	function page6Submit(props) {
+	    _reactRouter.browserHistory.push('/page7');
+
+	    return {
+	        type: "PAGE_6",
 	        payload: props
 	    };
 	}

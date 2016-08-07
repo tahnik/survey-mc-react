@@ -31,7 +31,7 @@ class Page1 extends Component {
                       </label>
                     </div>
                     {whatAreYou.touched && whatAreYou.error && <div className="form-control-feedback">{whatAreYou.error}</div>}
-                    <button type="submit" className="btn btn-primary">Enter</button>
+                    <button type="submit" className="btn btn-primary">Next</button>
                 </form>
             </div>
         )

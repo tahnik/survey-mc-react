@@ -24,7 +24,7 @@ class Page3 extends Component {
         const {fields: {role, specificDetails}, handleSubmit} = this.props;
         return(
             <div className="col-md-8 offset-xs-2">
-                <h3>Are you?</h3>
+                <h3>What is your role?</h3>
                 <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                     {roleMap.map((e) => {
                         return (
@@ -39,7 +39,7 @@ class Page3 extends Component {
                     { role.value == "Other" ? <div className="form-group"><label>Please specify</label><textarea className="form-control" rows="3" { ...specificDetails }></textarea></div> : <div></div> }
                     {role.touched && role.error && <div className="form-control-feedback">{role.error}</div>}
                     {specificDetails.touched && specificDetails.error && <div className="form-control-feedback">{specificDetails.error}</div>}
-                    <button type="submit" className="btn btn-primary">Enter</button>
+                    <button type="submit" className="btn btn-primary">Next</button>
                 </form>
             </div>
         )
