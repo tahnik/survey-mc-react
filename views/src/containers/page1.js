@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import { Signin } from '../actions/page_actions';
+import { page1Submit } from '../actions/page_actions';
 
-class Intro extends Component {
+class Page1 extends Component {
     onSubmit(e) {
-        this.props.Signin(e);
+        this.props.page1Submit(e);
     }
     render() {
-        const {fields: {password}, handleSubmit} = this.props;
+        const {fields: {whatAreYou}, handleSubmit} = this.props;
         return(
             <div className="col-md-8 offset-xs-2">
                 <h3>Are you?</h3>
                 <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                     <div className="form-check">
                       <label className="form-check-label">
-                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="CSS" />
+                        <input {...whatAreYou} className="form-check-input" type="radio" value="CSS" checked={whatAreYou.value === 'CSS'} />
                         CSS
                       </label>
                     </div>
                     <div className="form-check">
                       <label className="form-check-label">
-                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="CSSS" />
+                        <input {...whatAreYou} className="form-check-input" type="radio" value="CSSS" checked={whatAreYou.value === 'CSSS'} />
                         CSSS
                       </label>
                     </div>
                     <div className="form-check">
                       <label className="form-check-label">
-                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="CSSA" />
+                        <input {...whatAreYou} className="form-check-input" type="radio"  value="CSSA" checked={whatAreYou.value === 'CSSA'} />
                         CSSA
                       </label>
                     </div>
+                    {whatAreYou.touched && whatAreYou.error && <div className="form-control-feedback">{whatAreYou.error}</div>}
                     <button type="submit" className="btn btn-primary">Enter</button>
                 </form>
             </div>
@@ -41,10 +42,8 @@ function validate(formProps) {
 	const errors = {};
 	const PASSWORD_VALIDATOR_REGEX = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
-	if (!formProps.password) {
-		errors.password = 'Please enter a password';
-	}else if(PASSWORD_VALIDATOR_REGEX.exec(formProps.password) === null) {
-		errors.password = "Password must have an Uppercase and Lowercase Letter and a number. It must be at least 6 characters long"
+	if (!formProps.whatAreYou) {
+		errors.whatAreYou = 'Please select a choice';
 	}
 
 	return errors;
@@ -52,6 +51,6 @@ function validate(formProps) {
 
 export default reduxForm({
 	form: 'Signin',
-	fields: ['password'],
+	fields: ['whatAreYou'],
 	validate
-}, null, { Signin })(Intro);
+}, null, { page1Submit })(Page1);

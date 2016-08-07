@@ -546,6 +546,8 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(6);
@@ -564,19 +566,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Intro = function (_Component) {
-	  _inherits(Intro, _Component);
+	var Page1 = function (_Component) {
+	  _inherits(Page1, _Component);
 
-	  function Intro() {
-	    _classCallCheck(this, Intro);
+	  function Page1() {
+	    _classCallCheck(this, Page1);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Intro).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Page1).apply(this, arguments));
 	  }
 
-	  _createClass(Intro, [{
+	  _createClass(Page1, [{
 	    key: 'onSubmit',
 	    value: function onSubmit(e) {
-	      this.props.Signin(e);
+	      this.props.page1Submit(e);
 	    }
 	  }, {
 	    key: 'render',
@@ -584,7 +586,7 @@
 	      var _this2 = this;
 
 	      var _props = this.props;
-	      var password = _props.fields.password;
+	      var whatAreYou = _props.fields.whatAreYou;
 	      var handleSubmit = _props.handleSubmit;
 
 	      return _react2.default.createElement(
@@ -606,7 +608,7 @@
 	            _react2.default.createElement(
 	              'label',
 	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', { className: 'form-check-input', type: 'radio', name: 'exampleRadios', id: 'exampleRadios1', value: 'CSS' }),
+	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSS', checked: whatAreYou.value === 'CSS' })),
 	              'CSS'
 	            )
 	          ),
@@ -616,7 +618,7 @@
 	            _react2.default.createElement(
 	              'label',
 	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', { className: 'form-check-input', type: 'radio', name: 'exampleRadios', id: 'exampleRadios2', value: 'CSSS' }),
+	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSSS', checked: whatAreYou.value === 'CSSS' })),
 	              'CSSS'
 	            )
 	          ),
@@ -626,9 +628,14 @@
 	            _react2.default.createElement(
 	              'label',
 	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', { className: 'form-check-input', type: 'radio', name: 'exampleRadios', id: 'exampleRadios3', value: 'CSSA' }),
+	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSSA', checked: whatAreYou.value === 'CSSA' })),
 	              'CSSA'
 	            )
+	          ),
+	          whatAreYou.touched && whatAreYou.error && _react2.default.createElement(
+	            'div',
+	            { className: 'form-control-feedback' },
+	            whatAreYou.error
 	          ),
 	          _react2.default.createElement(
 	            'button',
@@ -640,17 +647,15 @@
 	    }
 	  }]);
 
-	  return Intro;
+	  return Page1;
 	}(_react.Component);
 
 	function validate(formProps) {
 	  var errors = {};
 	  var PASSWORD_VALIDATOR_REGEX = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
-	  if (!formProps.password) {
-	    errors.password = 'Please enter a password';
-	  } else if (PASSWORD_VALIDATOR_REGEX.exec(formProps.password) === null) {
-	    errors.password = "Password must have an Uppercase and Lowercase Letter and a number. It must be at least 6 characters long";
+	  if (!formProps.whatAreYou) {
+	    errors.whatAreYou = 'Please select a choice';
 	  }
 
 	  return errors;
@@ -658,9 +663,9 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	  form: 'Signin',
-	  fields: ['password'],
+	  fields: ['whatAreYou'],
 	  validate: validate
-	}, null, { Signin: _page_actions.Signin })(Intro);
+	}, null, { page1Submit: _page_actions.page1Submit })(Page1);
 
 /***/ },
 /* 10 */
@@ -1379,10 +1384,15 @@
 		value: true
 	});
 	exports.Signin = Signin;
+	exports.page1Submit = page1Submit;
 
 	var _reactRouter = __webpack_require__(4);
 
 	function Signin(password) {
+		console.log(password);
+	}
+
+	function page1Submit(password) {
 		console.log(password);
 	}
 
