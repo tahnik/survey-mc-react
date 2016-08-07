@@ -40,7 +40,6 @@ class Page1 extends Component {
 
 function validate(formProps) {
 	const errors = {};
-	const PASSWORD_VALIDATOR_REGEX = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
 	if (!formProps.whatAreYou) {
 		errors.whatAreYou = 'Please select a choice';
@@ -50,7 +49,7 @@ function validate(formProps) {
 }
 
 export default reduxForm({
-	form: 'Signin',
+	form: 'Page1',
 	fields: ['whatAreYou'],
 	validate
 }, null, { page1Submit })(Page1);
