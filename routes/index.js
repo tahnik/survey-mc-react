@@ -54,6 +54,7 @@ function renderFullPage(html, initialState) {
 
     	<!-- Bootstrap CSS -->
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     	<link rel="stylesheet" href="../stylesheets/main.css">
     </head>
     <body>
@@ -67,6 +68,7 @@ function renderFullPage(html, initialState) {
     	<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     </body>
     </html>
     `

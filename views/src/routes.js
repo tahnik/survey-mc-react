@@ -16,6 +16,14 @@ import Page10 from './containers/page10';
 import Page11 from './containers/page11';
 import Page12 from './containers/page12';
 import Page13 from './containers/page13';
+import Page14 from './containers/page14';
+import Page15 from './containers/page15';
+import Page16 from './containers/page16';
+import Page17 from './containers/page17';
+import Page18 from './containers/page18';
+import Page19 from './containers/page19';
+import Page20 from './containers/page20';
+import Page21 from './containers/page21';
 
 export default (
     <Router history={ browserHistory } >
@@ -34,6 +42,15 @@ export default (
             <Route path="/Page11" component={Page11} />
             <Route path="/Page12" component={Page12} />
             <Route path="/Page13" component={Page13} />
+            <Route path="/Page14" component={Page14} />
+            <Route path="/Page15" component={Page15} />
+            <Route path="/Page16" component={Page16} />
+            <Route path="/Page17" component={Page17} />
+            <Route path="/Page18" component={Page18} />
+            <Route path="/Page19" component={Page19} />
+            <Route path="/Page20" component={Page20} />
+            <Route path="/Page21" component={Page21} />
+
         </Route>
     </Router>
 )

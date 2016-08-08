@@ -7,10 +7,15 @@ class Intro extends Component {
         this.props.Signin(e);
     }
     render() {
-        const {fields: {password}, handleSubmit} = this.props;
+        const {fields: {email, password}, handleSubmit} = this.props;
         return(
             <div className="col-md-8 offset-xs-2">
                 <form className="form-inline" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
+                    <div className="form-group">
+                        <label className="sr-only">Email</label>
+                        <input type="email" className="form-control" placeholder="Email" {...email}/>
+                        {email.touched && email.error && <div className="form-control-feedback">{email.error}</div>}
+                    </div>
                     <div className="form-group">
                         <label className="sr-only">Password</label>
                         <input type="password" className="form-control" placeholder="Password" {...password}/>
@@ -38,6 +43,6 @@ function validate(formProps) {
 
 export default reduxForm({
 	form: 'Signin',
-	fields: ['password'],
+	fields: ['email', 'password'],
 	validate
 }, null, { Signin })(Intro);

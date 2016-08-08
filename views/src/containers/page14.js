@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import { Page13Submit } from '../actions/page_actions';
+import { Page14Submit } from '../actions/page_actions';
 var Rcslider = require('rc-slider');
 
-class Page13 extends Component {
+class Page14 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,13 +11,13 @@ class Page13 extends Component {
         }
     }
     onSubmit(e) {
-        this.props.Page13Submit({ proportionOfMeetings: this.state.RCValue});
+        this.props.Page14Submit({ timeSpentWorkingIndividually: this.state.RCValue});
     }
     render() {
         const {fields: {whatAreYou}, handleSubmit} = this.props;
         return(
             <div className="col-md-8 offset-xs-2">
-                <h4 style={{ marginBottom: 20 }}>What proportion of your informal or social meetings:</h4>
+                <h4 style={{ marginBottom: 20 }}>3.Of the time you spend working individually, what proportion of the work is</h4>
                 <Rcslider onAfterChange={(e) => this.setState({ RCValue: e })} />
                 <div style={{ marginTop: 20 }} className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>
@@ -38,7 +38,7 @@ function validate(formProps) {
 }
 
 export default reduxForm({
-	form: 'Page13',
+	form: 'Page14',
 	fields: ['whatAreYou'],
 	validate
-}, null, { Page13Submit })(Page13);
+}, null, { Page14Submit })(Page14);

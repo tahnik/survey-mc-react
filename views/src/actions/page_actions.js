@@ -1,10 +1,11 @@
 import { browserHistory } from 'react-router';
+import axios from 'axios';
 
 export function Signin(props) {
     browserHistory.push('/page1');
 	return {
         type: "SIGN_IN",
-        payload: props.password
+        payload: props
     }
 }
 
@@ -58,5 +59,129 @@ export function page6Submit(props) {
 	return {
         type: "PAGE_6",
         payload: props
+    }
+}
+
+
+export function page7Submit(props) {
+    browserHistory.push('/page8');
+
+	return {
+        type: "PAGE_7",
+        payload: props
+    }
+}
+
+export function page8Submit(props) {
+    browserHistory.push('/page9');
+
+	return {
+        type: "PAGE_8",
+        payload: props
+    }
+}
+
+export function page9Submit(props) {
+    browserHistory.push('/page10');
+
+	return {
+        type: "PAGE_9",
+        payload: props
+    }
+}
+
+export function page10Submit(props) {
+    browserHistory.push('/page11');
+
+	return {
+        type: "PAGE_10",
+        payload: props
+    }
+}
+
+export function page11Submit(props) {
+    browserHistory.push('/page12');
+
+	return {
+        type: "PAGE_11",
+        payload: props
+    }
+}
+
+export function page12Submit(props) {
+    browserHistory.push('/page13');
+
+	return {
+        type: "PAGE_12",
+        payload: props
+    }
+}
+
+export function page13Submit(props) {
+    browserHistory.push('/page14');
+
+	return {
+        type: "PAGE_13",
+        payload: props
+    }
+}
+
+export function page14Submit(props) {
+    browserHistory.push('/page15');
+
+	return {
+        type: "PAGE_14",
+        payload: props
+    }
+}
+
+export function page15Submit(props) {
+    browserHistory.push('/page16');
+
+	return {
+        type: "PAGE_15",
+        payload: props
+    }
+}
+
+export function page16Submit(props) {
+    browserHistory.push('/page17');
+
+	return {
+        type: "PAGE_16",
+        payload: props
+    }
+}
+
+export function page17Submit(props) {
+    browserHistory.push('/page18');
+
+	return {
+        type: "PAGE_17",
+        payload: props
+    }
+}
+
+export function page18Submit(props) {
+    browserHistory.push('/page19');
+
+	return {
+        type: "PAGE_18",
+        payload: props
+    }
+}
+
+export function Page19Submit(props) {
+    const url = "https://survey-6242b.firebaseio.com/users/users.json";
+    console.log(props.credentials.email);
+    var props = {
+        email: props.credentials.email,
+        data: props
+    }
+
+    var request = axios.post(url, props);
+
+    return {
+        type: "FINISH"
     }
 }

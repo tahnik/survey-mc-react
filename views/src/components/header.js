@@ -22,6 +22,12 @@ class Header extends Component {
 				    <li className="page-item"><Link className="page-link" to={'/page11'}>11</Link></li>
 				    <li className="page-item"><Link className="page-link" to={'/page12'}>12</Link></li>
 				    <li className="page-item"><Link className="page-link" to={'/page13'}>13</Link></li>
+                    <li className="page-item"><Link className="page-link" to={'/page14'}>14</Link></li>
+				    <li className="page-item"><Link className="page-link" to={'/page15'}>15</Link></li>
+                    <li className="page-item"><Link className="page-link" to={'/page16'}>16</Link></li>
+				    <li className="page-item"><Link className="page-link" to={'/page17'}>17</Link></li>
+                    <li className="page-item"><Link className="page-link" to={'/page18'}>18</Link></li>
+				    <li className="page-item"><Link className="page-link" to={'/page19'}>19</Link></li>
 				  </ul>
 				</nav>
             </div>
