@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { page18Submit } from '../actions/page_actions';
 
-class Page18 extends Component {
+class page18 extends Component {
     onSubmit(e) {
         this.props.page18Submit(e);
     }
     render() {
         const {fields: {designImpactCor, designImpactEnv, dedicatedSocialSpace, workspaceInteraction, currentWork3, futureWork3}, handleSubmit} = this.props;
         return(
+             <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 18: Future space</legend>
             <div className="col-md-8 offset-xs-2">
                 <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                     <div className="form-group">
@@ -38,6 +44,11 @@ class Page18 extends Component {
                     <button type="submit" className="btn btn-primary">Next</button>
                 </form>
             </div>
+            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
@@ -50,7 +61,7 @@ function validate(formProps) {
 }
 
 export default reduxForm({
-	form: 'Page18',
+	form: 'page18',
 	fields: ['designImpactCor', 'designImpactEnv', 'dedicatedSocialSpace', 'workspaceInteraction', 'currentWork3', 'futureWork3'],
 	validate
-}, null, { page18Submit })(Page18);
+}, null, { page18Submit })(page18);

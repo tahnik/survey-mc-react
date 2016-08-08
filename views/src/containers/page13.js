@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import { Page13Submit } from '../actions/page_actions';
+import { page13Submit } from '../actions/page_actions';
 var Rcslider = require('rc-slider');
 
-class Page13 extends Component {
+class page13 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,16 +11,28 @@ class Page13 extends Component {
         }
     }
     onSubmit(e) {
-        this.props.Page13Submit({ proportionOfMeetings: this.state.RCValue});
+        this.props.page13Submit({ proportionOfMeetings: this.state.RCValue});
     }
     render() {
         const {fields: {whatAreYou}, handleSubmit} = this.props;
         return(
+            <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 13: How do you currently use the office?</legend>
             <div className="col-md-8 offset-xs-2">
-                <h4 style={{ marginBottom: 20 }}>What proportion of your informal or social meetings:</h4>
+                <h4 style={{ marginBottom: 20 }}>What proportion of your client meetings are:</h4>
+                <h5 style={{color: 'skyblue', marginBottom: 20}}>Formal meetings or workshops<span style={{color: '#b2b2b2'}} > | Informal working sessions</span></h5>
                 <Rcslider onAfterChange={(e) => this.setState({ RCValue: e })} />
                 <div style={{ marginTop: 20 }} className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>
+                </div>
+            </div>
+             </fieldset>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
@@ -38,7 +50,7 @@ function validate(formProps) {
 }
 
 export default reduxForm({
-	form: 'Page13',
+	form: 'page13',
 	fields: ['whatAreYou'],
 	validate
-}, null, { Page13Submit })(Page13);
+}, null, { page13Submit })(page13);

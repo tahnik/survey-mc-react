@@ -4,8 +4,11 @@ import { Link } from 'react-router';
 class Header extends Component {
     render(){
         return(
-            <div style={{ marginTop: 20 }}>
-                <h1 className="text-xs-center">Welcome to the Survey</h1>
+            <div>
+                <div className="container-fluid customTop">
+                    <h1 className="text-xs-center">London Office Design for 
+the Future</h1>
+                </div>
                 { this.props.children }
                 <nav aria-label="Page navigation" style={{ textAlign: 'center' }}>
 				  <ul className="pagination">

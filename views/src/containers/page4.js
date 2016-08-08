@@ -11,8 +11,13 @@ class Page4 extends Component {
     render() {
         const {fields: {tenure}, handleSubmit} = this.props;
         return(
+             <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 4: Are you?</legend>
             <div className="col-md-8 offset-xs-2">
-                <h3>Are you?</h3>
                 <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                     {TENURE.map((e) => {
                         return (
@@ -27,6 +32,11 @@ class Page4 extends Component {
                     {tenure.touched && tenure.error && <div className="form-control-feedback">{tenure.error}</div>}
                     <button type="submit" className="btn btn-primary">Next</button>
                 </form>
+            </div>
+                    </fieldset>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import { Page14Submit } from '../actions/page_actions';
+import { page14Submit } from '../actions/page_actions';
 var Rcslider = require('rc-slider');
 
-class Page14 extends Component {
+class page14 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,16 +11,28 @@ class Page14 extends Component {
         }
     }
     onSubmit(e) {
-        this.props.Page14Submit({ timeSpentWorkingIndividually: this.state.RCValue});
+        this.props.page14Submit({ timeSpentWorkingIndividually: this.state.RCValue});
     }
     render() {
         const {fields: {whatAreYou}, handleSubmit} = this.props;
         return(
+            <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 14: How do you currently use the office?</legend>
             <div className="col-md-8 offset-xs-2">
-                <h4 style={{ marginBottom: 20 }}>3.Of the time you spend working individually, what proportion of the work is</h4>
+                <h5 style={{ marginBottom: 20 }}>Of the time you spend working individually, what proportion of the work is:</h5>
+                <h5 style={{color: 'skyblue', marginBottom: 20}}>Complex work requiring concentration<span style={{color: '#b2b2b2'}} > | Routine or administrative work</span></h5>
                 <Rcslider onAfterChange={(e) => this.setState({ RCValue: e })} />
                 <div style={{ marginTop: 20 }} className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>
+                </div>
+            </div>
+                </fieldset>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
@@ -38,7 +50,7 @@ function validate(formProps) {
 }
 
 export default reduxForm({
-	form: 'Page14',
+	form: 'page14',
 	fields: ['whatAreYou'],
 	validate
-}, null, { Page14Submit })(Page14);
+}, null, { page14Submit })(page14);

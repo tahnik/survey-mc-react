@@ -213,17 +213,45 @@
 	} ())
 	function runTimeout(fun) {
 	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
 	        return setTimeout(fun, 0);
-	    } else {
-	        return cachedSetTimeout.call(null, fun, 0);
 	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+
+
 	}
 	function runClearTimeout(marker) {
 	    if (cachedClearTimeout === clearTimeout) {
-	        clearTimeout(marker);
-	    } else {
-	        cachedClearTimeout.call(null, marker);
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
 	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+
+
+
 	}
 	var queue = [];
 	var draining = false;
@@ -22396,7 +22424,7 @@
 
 	/**
 	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
 	 * of values.
 	 */
 	var objectToString = objectProto.toString;
@@ -22410,8 +22438,7 @@
 	 * @since 0.8.0
 	 * @category Lang
 	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a plain object,
-	 *  else `false`.
+	 * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
 	 * @example
 	 *
 	 * function Foo() {
@@ -22453,17 +22480,8 @@
 
 	var overArg = __webpack_require__(186);
 
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeGetPrototype = Object.getPrototypeOf;
-
-	/**
-	 * Gets the `[[Prototype]]` of `value`.
-	 *
-	 * @private
-	 * @param {*} value The value to query.
-	 * @returns {null|Object} Returns the `[[Prototype]]`.
-	 */
-	var getPrototype = overArg(nativeGetPrototype, Object);
+	/** Built-in value references. */
+	var getPrototype = overArg(Object.getPrototypeOf, Object);
 
 	module.exports = getPrototype;
 
@@ -22473,7 +22491,7 @@
 /***/ function(module, exports) {
 
 	/**
-	 * Creates a function that invokes `func` with its first argument transformed.
+	 * Creates a unary function that invokes `func` with its argument transformed.
 	 *
 	 * @private
 	 * @param {Function} func The function to wrap.
@@ -31888,11 +31906,15 @@
 									value: function render() {
 													return _react2.default.createElement(
 																	'div',
-																	{ style: { marginTop: 20 } },
+																	null,
 																	_react2.default.createElement(
-																					'h1',
-																					{ className: 'text-xs-center' },
-																					'Welcome to the Survey'
+																					'div',
+																					{ className: 'container-fluid customTop' },
+																					_react2.default.createElement(
+																									'h1',
+																									{ className: 'text-xs-center' },
+																									'London Office Design for the Future'
+																					)
 																	),
 																	this.props.children,
 																	_react2.default.createElement(
@@ -32140,46 +32162,87 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form-inline', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'form-group' },
+	                        { className: 'col-md-12' },
 	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'sr-only' },
-	                            'Email'
-	                        ),
-	                        _react2.default.createElement('input', _extends({ type: 'email', className: 'form-control', placeholder: 'Email' }, email)),
-	                        email.touched && email.error && _react2.default.createElement(
 	                            'div',
-	                            { className: 'form-control-feedback' },
-	                            email.error
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Login'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-12' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form-horizontal', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                { className: 'col-md-2 control-label' },
+	                                                'Email'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-9' },
+	                                                _react2.default.createElement('input', _extends({ type: 'email', className: 'form-control', placeholder: 'name@example.com' }, email))
+	                                            ),
+	                                            email.touched && email.error && _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-8 col-md-offset-4 form-control-feedback' },
+	                                                email.error
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                { className: 'col-md-2 control-label' },
+	                                                'Password'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-9' },
+	                                                _react2.default.createElement('input', _extends({ type: 'password', className: 'form-control', placeholder: 'password' }, password))
+	                                            ),
+	                                            password.touched && password.error && _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-8 col-md-offset-4 form-control-feedback' },
+	                                                password.error
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-12' },
+	                                                _react2.default.createElement(
+	                                                    'button',
+	                                                    { type: 'submit', className: 'btn btn-primary' },
+	                                                    'Next'
+	                                                )
+	                                            )
+	                                        )
+	                                    )
+	                                )
+	                            )
 	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'sr-only' },
-	                            'Password'
-	                        ),
-	                        _react2.default.createElement('input', _extends({ type: 'password', className: 'form-control', placeholder: 'Password' }, password)),
-	                        password.touched && password.error && _react2.default.createElement(
-	                            'div',
-	                            { className: 'form-control-feedback' },
-	                            password.error
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
 	                    )
 	                )
 	            );
@@ -33774,7 +33837,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -33798,103 +33861,123 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Page1 = function (_Component) {
-	  _inherits(Page1, _Component);
+	    _inherits(Page1, _Component);
 
-	  function Page1() {
-	    _classCallCheck(this, Page1);
+	    function Page1() {
+	        _classCallCheck(this, Page1);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Page1).apply(this, arguments));
-	  }
-
-	  _createClass(Page1, [{
-	    key: 'onSubmit',
-	    value: function onSubmit(e) {
-	      this.props.page1Submit(e);
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page1).apply(this, arguments));
 	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
 
-	      var _props = this.props;
-	      var whatAreYou = _props.fields.whatAreYou;
-	      var handleSubmit = _props.handleSubmit;
+	    _createClass(Page1, [{
+	        key: 'onSubmit',
+	        value: function onSubmit(e) {
+	            this.props.page1Submit(e);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
 
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'col-md-8 offset-xs-2' },
-	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          'Are you?'
-	        ),
-	        _react2.default.createElement(
-	          'form',
-	          { className: 'form', onSubmit: handleSubmit(function (e) {
-	              return _this2.onSubmit(e);
-	            }) },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSS', checked: whatAreYou.value === 'CSS' })),
-	              'CSS'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSSS', checked: whatAreYou.value === 'CSSS' })),
-	              'CSSS'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSSA', checked: whatAreYou.value === 'CSSA' })),
-	              'CSSA'
-	            )
-	          ),
-	          whatAreYou.touched && whatAreYou.error && _react2.default.createElement(
-	            'div',
-	            { className: 'form-control-feedback' },
-	            whatAreYou.error
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { type: 'submit', className: 'btn btn-primary' },
-	            'Next'
-	          )
-	        )
-	      );
-	    }
-	  }]);
+	            var _props = this.props;
+	            var whatAreYou = _props.fields.whatAreYou;
+	            var handleSubmit = _props.handleSubmit;
 
-	  return Page1;
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'container' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'row' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 1: Are you?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-check' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                { className: 'form-check-label' },
+	                                                _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSS', checked: whatAreYou.value === 'CSS' })),
+	                                                'CSS'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-check' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                { className: 'form-check-label' },
+	                                                _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSSS', checked: whatAreYou.value === 'CSSS' })),
+	                                                'CSSS'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-check' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                { className: 'form-check-label' },
+	                                                _react2.default.createElement('input', _extends({}, whatAreYou, { className: 'form-check-input', type: 'radio', value: 'CSSA', checked: whatAreYou.value === 'CSSA' })),
+	                                                'CSSA'
+	                                            )
+	                                        ),
+	                                        whatAreYou.touched && whatAreYou.error && _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-control-feedback' },
+	                                            whatAreYou.error
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Page1;
 	}(_react.Component);
 
 	function validate(formProps) {
-	  var errors = {};
+	    var errors = {};
 
-	  if (!formProps.whatAreYou) {
-	    errors.whatAreYou = 'Please select a choice';
-	  }
+	    if (!formProps.whatAreYou) {
+	        errors.whatAreYou = 'Please select a choice';
+	    }
 
-	  return errors;
+	    return errors;
 	}
 
 	exports.default = (0, _reduxForm.reduxForm)({
-	  form: 'Page1',
-	  fields: ['whatAreYou'],
-	  validate: validate
+	    form: 'Page1',
+	    fields: ['whatAreYou'],
+	    validate: validate
 	}, null, { page1Submit: _page_actions.page1Submit })(Page1);
 
 /***/ },
@@ -33959,146 +34042,166 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-md-8 offset-xs-2' },
+	        { className: 'container' },
 	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          'What is your affiliation?'
-	        ),
-	        _react2.default.createElement(
-	          'form',
-	          { className: 'form', onSubmit: handleSubmit(function (e) {
-	              return _this2.onSubmit(e);
-	            }) },
+	          'div',
+	          { className: 'row' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'form-check' },
+	            { className: 'col-md-12' },
 	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'Practice', checked: affliation.value === 'Practice' })),
-	              'Practice'
+	              'div',
+	              { className: 'well bs-component' },
+	              _react2.default.createElement(
+	                'fieldset',
+	                null,
+	                _react2.default.createElement(
+	                  'legend',
+	                  null,
+	                  'Question 2: What is your affiliation?'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col-md-8 offset-xs-2' },
+	                  _react2.default.createElement(
+	                    'form',
+	                    { className: 'form', onSubmit: handleSubmit(function (e) {
+	                        return _this2.onSubmit(e);
+	                      }) },
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'Practice', checked: affliation.value === 'Practice' })),
+	                        'Practice'
+	                      )
+	                    ),
+	                    affliation.value == "Practice" ? _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-group' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'Please specify'
+	                      ),
+	                      _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, specificDetails))
+	                    ) : _react2.default.createElement('div', null),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'MSO', checked: affliation.value === 'MSO' })),
+	                        'MSO'
+	                      )
+	                    ),
+	                    affliation.value == "MSO" ? _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-group' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'Please specify'
+	                      ),
+	                      _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, specificDetails))
+	                    ) : _react2.default.createElement('div', null),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'PD_Learning_HR', checked: affliation.value === 'PD_Learning_HR' })),
+	                        'PD/Learning/HR'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'FABP', checked: affliation.value === 'FABP' })),
+	                        'Finance/Accouting/Benefits/Payroll'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'COMMS', checked: affliation.value === 'COMMS' })),
+	                        'Comms (internal/external)'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'EA', checked: affliation.value === 'EA' })),
+	                        'EA'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'OS', checked: affliation.value === 'OS' })),
+	                        'Office services (IT, facilities, repro)'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'FF', checked: affliation.value === 'FF' })),
+	                        'Firm functions (Audit, legal, risk, tax, MIO, MPS, Travel, VG, Firm IT)'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'Other', checked: affliation.value === 'Other' })),
+	                        'Other'
+	                      )
+	                    ),
+	                    affliation.value == "Other" ? _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-group' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'Please specify'
+	                      ),
+	                      _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, specificDetails))
+	                    ) : _react2.default.createElement('div', null),
+	                    affliation.touched && affliation.error && _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-control-feedback' },
+	                      affliation.error
+	                    ),
+	                    _react2.default.createElement(
+	                      'button',
+	                      { type: 'submit', className: 'btn btn-primary' },
+	                      'Next'
+	                    )
+	                  )
+	                )
+	              )
 	            )
-	          ),
-	          affliation.value == "Practice" ? _react2.default.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            _react2.default.createElement(
-	              'label',
-	              null,
-	              'Please specify'
-	            ),
-	            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, specificDetails))
-	          ) : _react2.default.createElement('div', null),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'MSO', checked: affliation.value === 'MSO' })),
-	              'MSO'
-	            )
-	          ),
-	          affliation.value == "MSO" ? _react2.default.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            _react2.default.createElement(
-	              'label',
-	              null,
-	              'Please specify'
-	            ),
-	            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, specificDetails))
-	          ) : _react2.default.createElement('div', null),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'PD_Learning_HR', checked: affliation.value === 'PD_Learning_HR' })),
-	              'PD/Learning/HR'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'FABP', checked: affliation.value === 'FABP' })),
-	              'Finance/Accouting/Benefits/Payroll'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'COMMS', checked: affliation.value === 'COMMS' })),
-	              'Comms (internal/external)'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'EA', checked: affliation.value === 'EA' })),
-	              'EA'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'OS', checked: affliation.value === 'OS' })),
-	              'Office services (IT, facilities, repro)'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'FF', checked: affliation.value === 'FF' })),
-	              'Firm functions (Audit, legal, risk, tax, MIO, MPS, Travel, VG, Firm IT)'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-check' },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'form-check-label' },
-	              _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'Other', checked: affliation.value === 'Other' })),
-	              'Other'
-	            )
-	          ),
-	          affliation.value == "Other" ? _react2.default.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            _react2.default.createElement(
-	              'label',
-	              null,
-	              'Please specify'
-	            ),
-	            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, specificDetails))
-	          ) : _react2.default.createElement('div', null),
-	          affliation.touched && affliation.error && _react2.default.createElement(
-	            'div',
-	            { className: 'form-control-feedback' },
-	            affliation.error
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { type: 'submit', className: 'btn btn-primary' },
-	            'Next'
 	          )
 	        )
 	      );
@@ -44279,53 +44382,73 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'What is your role?'
-	                ),
-	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
-	                    roleMap.map(function (e) {
-	                        return _react2.default.createElement(
-	                            'div',
-	                            { className: 'form-check' },
-	                            _react2.default.createElement(
-	                                'label',
-	                                { className: 'form-check-label' },
-	                                _react2.default.createElement('input', _extends({}, role, { className: 'form-check-input', type: 'radio', value: e })),
-	                                e
-	                            )
-	                        );
-	                    }),
-	                    role.value == "Other" ? _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Please specify'
-	                        ),
-	                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, specificDetails))
-	                    ) : _react2.default.createElement('div', null),
-	                    role.touched && role.error && _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-control-feedback' },
-	                        role.error
-	                    ),
-	                    specificDetails.touched && specificDetails.error && _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-control-feedback' },
-	                        specificDetails.error
-	                    ),
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 3: What is your role?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        roleMap.map(function (e) {
+	                                            return _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'form-check' },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { className: 'form-check-label' },
+	                                                    _react2.default.createElement('input', _extends({}, role, { className: 'form-check-input', type: 'radio', value: e })),
+	                                                    e
+	                                                )
+	                                            );
+	                                        }),
+	                                        role.value == "Other" ? _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'Please specify'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, specificDetails))
+	                                        ) : _react2.default.createElement('div', null),
+	                                        role.touched && role.error && _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-control-feedback' },
+	                                            role.error
+	                                        ),
+	                                        specificDetails.touched && specificDetails.error && _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-control-feedback' },
+	                                            specificDetails.error
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -44420,38 +44543,58 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Are you?'
-	                ),
-	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
-	                    TENURE.map(function (e) {
-	                        return _react2.default.createElement(
-	                            'div',
-	                            { className: 'form-check' },
-	                            _react2.default.createElement(
-	                                'label',
-	                                { className: 'form-check-label' },
-	                                _react2.default.createElement('input', _extends({}, tenure, { className: 'form-check-input', type: 'radio', value: e })),
-	                                e
-	                            )
-	                        );
-	                    }),
-	                    tenure.touched && tenure.error && _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-control-feedback' },
-	                        tenure.error
-	                    ),
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 4: Are you?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        TENURE.map(function (e) {
+	                                            return _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'form-check' },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { className: 'form-check-label' },
+	                                                    _react2.default.createElement('input', _extends({}, tenure, { className: 'form-check-input', type: 'radio', value: e })),
+	                                                    e
+	                                                )
+	                                            );
+	                                        }),
+	                                        tenure.touched && tenure.error && _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-control-feedback' },
+	                                            tenure.error
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -44534,38 +44677,58 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'What is your usual workspace in London office?'
-	                ),
-	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
-	                    USUAL_WORKSPACE.map(function (e) {
-	                        return _react2.default.createElement(
-	                            'div',
-	                            { className: 'form-check' },
-	                            _react2.default.createElement(
-	                                'label',
-	                                { className: 'form-check-label' },
-	                                _react2.default.createElement('input', _extends({}, usualWorkspace, { className: 'form-check-input', type: 'radio', value: e })),
-	                                e
-	                            )
-	                        );
-	                    }),
-	                    usualWorkspace.touched && usualWorkspace.error && _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-control-feedback' },
-	                        usualWorkspace.error
-	                    ),
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 5: What is your usual workspace in London office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        USUAL_WORKSPACE.map(function (e) {
+	                                            return _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'form-check' },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { className: 'form-check-label' },
+	                                                    _react2.default.createElement('input', _extends({}, usualWorkspace, { className: 'form-check-input', type: 'radio', value: e })),
+	                                                    e
+	                                                )
+	                                            );
+	                                        }),
+	                                        usualWorkspace.touched && usualWorkspace.error && _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-control-feedback' },
+	                                            usualWorkspace.error
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -44672,89 +44835,109 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Satisfaction'
-	                ),
-	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
-	                    SATISFACTION.map(function (e) {
-	                        if (e.selectionType == 'S') {
-	                            return _react2.default.createElement(
-	                                'div',
+	                    'div',
+	                    { className: 'row' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
 	                                null,
-	                                e.Q,
-	                                S.map(function (v) {
-	                                    return _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'form-check' },
-	                                        _react2.default.createElement(
-	                                            'label',
-	                                            { className: 'form-check-label' },
-	                                            _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
-	                                            v.name
-	                                        )
-	                                    );
-	                                })
-	                            );
-	                        } else if (e.selectionType == 'E') {
-	                            return _react2.default.createElement(
-	                                'div',
-	                                null,
-	                                e.Q,
-	                                E.map(function (v) {
-	                                    return _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'form-check' },
-	                                        _react2.default.createElement(
-	                                            'label',
-	                                            { className: 'form-check-label' },
-	                                            _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
-	                                            v.name
-	                                        )
-	                                    );
-	                                })
-	                            );
-	                        } else if (e.selectionType == 'A') {
-	                            return _react2.default.createElement(
-	                                'div',
-	                                null,
-	                                e.Q,
-	                                A.map(function (v) {
-	                                    return _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'form-check' },
-	                                        _react2.default.createElement(
-	                                            'label',
-	                                            { className: 'form-check-label' },
-	                                            _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
-	                                            v.name
-	                                        )
-	                                    );
-	                                })
-	                            );
-	                        } else if (e.selectionType == 'FT') {
-	                            return _react2.default.createElement(
-	                                'div',
-	                                null,
-	                                e.Q,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 6: Satisfaction'
+	                                ),
 	                                _react2.default.createElement(
 	                                    'div',
-	                                    { className: 'form-group' },
-	                                    _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, e.fieldValue))
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        SATISFACTION.map(function (e) {
+	                                            if (e.selectionType == 'S') {
+	                                                return _react2.default.createElement(
+	                                                    'div',
+	                                                    null,
+	                                                    e.Q,
+	                                                    S.map(function (v) {
+	                                                        return _react2.default.createElement(
+	                                                            'div',
+	                                                            { className: 'form-check' },
+	                                                            _react2.default.createElement(
+	                                                                'label',
+	                                                                { className: 'form-check-label' },
+	                                                                _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
+	                                                                v.name
+	                                                            )
+	                                                        );
+	                                                    })
+	                                                );
+	                                            } else if (e.selectionType == 'E') {
+	                                                return _react2.default.createElement(
+	                                                    'div',
+	                                                    null,
+	                                                    e.Q,
+	                                                    E.map(function (v) {
+	                                                        return _react2.default.createElement(
+	                                                            'div',
+	                                                            { className: 'form-check' },
+	                                                            _react2.default.createElement(
+	                                                                'label',
+	                                                                { className: 'form-check-label' },
+	                                                                _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
+	                                                                v.name
+	                                                            )
+	                                                        );
+	                                                    })
+	                                                );
+	                                            } else if (e.selectionType == 'A') {
+	                                                return _react2.default.createElement(
+	                                                    'div',
+	                                                    null,
+	                                                    e.Q,
+	                                                    A.map(function (v) {
+	                                                        return _react2.default.createElement(
+	                                                            'div',
+	                                                            { className: 'form-check' },
+	                                                            _react2.default.createElement(
+	                                                                'label',
+	                                                                { className: 'form-check-label' },
+	                                                                _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
+	                                                                v.name
+	                                                            )
+	                                                        );
+	                                                    })
+	                                                );
+	                                            } else if (e.selectionType == 'FT') {
+	                                                return _react2.default.createElement(
+	                                                    'div',
+	                                                    null,
+	                                                    e.Q,
+	                                                    _react2.default.createElement(
+	                                                        'div',
+	                                                        { className: 'form-group' },
+	                                                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, e.fieldValue))
+	                                                    )
+	                                                );
+	                                            }
+	                                        }),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
 	                                )
-	                            );
-	                        }
-	                    }),
-	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -44895,53 +45078,83 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-4' },
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: '1hIW', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1hr Individual Work'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: '1hFM', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1hr Formal Meetings'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: '1hSO', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1hr Social'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: '1hCL', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1hr Clients'
-	                    )
-	                ),
-	                _react2.default.createElement('div', { id: 'droppedHours', onDrop: function onDrop(e) {
-	                        return _this2.drop(e);
-	                    }, onDragOver: function onDragOver(e) {
-	                        return _this2.allowDrop(e);
-	                    }, className: 'col-md-8', style: { borderLeft: "10px solid grey", borderBottom: "10px solid grey", height: '65vh', float: 'right' } }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-md-12' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick(e) {
-	                                return _this2.onSubmit(e);
-	                            }, className: 'btn btn-primary' },
-	                        'Next'
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 7: How do you currently use the office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-10 offset-xs-1' },
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        null,
+	                                        'Proportion of time spent on: (Starting from the beginning of the day at the top)'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-4' },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '1hIW', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1hr Individual Work'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '1hFM', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#ff8900', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1hr Formal Meetings'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '1hSO', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#1d7e00', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1hr Social'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '1hCL', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#c40000', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1hr Clients'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement('div', { id: 'droppedHours', onDrop: function onDrop(e) {
+	                                            return _this2.drop(e);
+	                                        }, onDragOver: function onDragOver(e) {
+	                                            return _this2.allowDrop(e);
+	                                        }, className: 'col-md-8', style: { borderLeft: "10px solid grey", borderBottom: "10px solid grey", height: '65vh', float: 'right' } }),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { onClick: function onClick(e) {
+	                                                    return _this2.onSubmit(e);
+	                                                }, className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -45090,85 +45303,115 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-12' },
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-4', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1/2hr'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: '1h', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-4', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1hr'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'remoteMeetings', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
+	                        { className: 'col-md-12' },
 	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'Remote Meeting'
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 8: How do you currently use the office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        null,
+	                                        'Of the time you spend collaborating with colleagues in formal meetings, what proportion of this is:'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1/2hr'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '1h', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-4', style: { backgroundColor: '#ff9300', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1hr'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'remoteMeetings', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'Remote Meeting'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'inPerson', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'In person'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'formalEvents', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'Formal events'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { onClick: function onClick(e) {
+	                                                    return _this2.onSubmit(e);
+	                                                }, className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
 	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'inPerson', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
-	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'In person'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'formalEvents', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
-	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'Formal events'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-md-12' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick(e) {
-	                                return _this2.onSubmit(e);
-	                            }, className: 'btn btn-primary' },
-	                        'Next'
 	                    )
 	                )
 	            );
@@ -45317,85 +45560,115 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-12' },
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-4', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1/2hr'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: '1h', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-4', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1hr'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'oneToOne', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
+	                        { className: 'col-md-12' },
 	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            '1-1'
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 9: How do you currently use the office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        null,
+	                                        'Of the in person meetings what proportion of your meetings are:'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1/2hr'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '1h', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-4', style: { backgroundColor: '#ff9300', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1hr'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'oneToOne', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                '1-1'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'threeToFive', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                '3-5'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'moreThan5', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'More than 5'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { onClick: function onClick(e) {
+	                                                    return _this2.onSubmit(e);
+	                                                }, className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
 	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'threeToFive', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
-	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            '3-5'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'moreThan5', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
-	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'More than 5'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-md-12' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick(e) {
-	                                return _this2.onSubmit(e);
-	                            }, className: 'btn btn-primary' },
-	                        'Next'
 	                    )
 	                )
 	            );
@@ -45544,85 +45817,115 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-12' },
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-4', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1/2hr'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: '1h', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-4', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1hr'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'planEx', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
+	                        { className: 'col-md-12' },
 	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'Planning/execution discussions'
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 10: How do you currently use the office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        null,
+	                                        'What proportion of your meetings are:'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1/2hr'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '1h', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-4', style: { backgroundColor: '#ff9300', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1hr'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'planEx', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'Planning/execution discussions'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'FeDev', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'Feedback/development discussions'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'CrPro', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'Creative/problem solving discussions'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { onClick: function onClick(e) {
+	                                                    return _this2.onSubmit(e);
+	                                                }, className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
 	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'FeDev', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
-	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'Feedback/development discussions'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'CrPro', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
-	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'Creative/problem solving discussions'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-md-12' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick(e) {
-	                                return _this2.onSubmit(e);
-	                            }, className: 'btn btn-primary' },
-	                        'Next'
 	                    )
 	                )
 	            );
@@ -45771,85 +46074,115 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-12' },
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-4', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1/2hr'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: '1h', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-4', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        '1hr'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'NoCo', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
+	                        { className: 'col-md-12' },
 	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'Not confidential'
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 11: How do you currently use the office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        null,
+	                                        'What proportion of your meetings are:'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1/2hr'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: '1h', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-4', style: { backgroundColor: '#ff9300', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            '1hr'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'NoCo', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'Not confidential'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'SOCO', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'Somewhat confidential'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { id: 'HICO', onDrop: function onDrop(e) {
+	                                                return _this2.drop(e);
+	                                            }, onDragOver: function onDragOver(e) {
+	                                                return _this2.allowDrop(e);
+	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            _react2.default.createElement(
+	                                                'h6',
+	                                                { className: 'text-xs-center' },
+	                                                'Highly confidential'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { onClick: function onClick(e) {
+	                                                    return _this2.onSubmit(e);
+	                                                }, className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
 	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'SOCO', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
-	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'Somewhat confidential'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'HICO', onDrop: function onDrop(e) {
-	                            return _this2.drop(e);
-	                        }, onDragOver: function onDragOver(e) {
-	                            return _this2.allowDrop(e);
-	                        }, className: 'col-md-4', style: { height: '40vh' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-10 col-md-offset-1', style: { height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 } },
-	                        _react2.default.createElement(
-	                            'h6',
-	                            { className: 'text-xs-center' },
-	                            'Highly confidential'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-md-12' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick(e) {
-	                                return _this2.onSubmit(e);
-	                            }, className: 'btn btn-primary' },
-	                        'Next'
 	                    )
 	                )
 	            );
@@ -45911,13 +46244,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Page7 = function (_Component) {
-	    _inherits(Page7, _Component);
+	var Page12 = function (_Component) {
+	    _inherits(Page12, _Component);
 
-	    function Page7(props) {
-	        _classCallCheck(this, Page7);
+	    function Page12(props) {
+	        _classCallCheck(this, Page12);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Page7).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Page12).call(this, props));
 
 	        _this.state = {
 	            totalDragged: 0
@@ -45925,7 +46258,7 @@
 	        return _this;
 	    }
 
-	    _createClass(Page7, [{
+	    _createClass(Page12, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            var node1 = _reactDom2.default.findDOMNode(this.refs.sortable1);
@@ -45944,7 +46277,7 @@
 	                last: last,
 	                least: least
 	            };
-	            this.props.page7Submit(props);
+	            this.props.page12Submit(props);
 	        }
 	    }, {
 	        key: 'drop',
@@ -45981,75 +46314,105 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-4' },
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: 'team', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        'My team'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'cohort', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        'My cohort'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'practice', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        'My practice'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'others', draggable: 'true', onDragStart: function onDragStart(e) {
-	                                return _this2.drag(e);
-	                            }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' } },
-	                        'Others'
-	                    )
-	                ),
-	                _react2.default.createElement('div', { id: 'most', onDrop: function onDrop(e) {
-	                        return _this2.drop(e);
-	                    }, onDragOver: function onDragOver(e) {
-	                        return _this2.allowDrop(e);
-	                    }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
-	                _react2.default.createElement('div', { id: 'more', onDrop: function onDrop(e) {
-	                        return _this2.drop(e);
-	                    }, onDragOver: function onDragOver(e) {
-	                        return _this2.allowDrop(e);
-	                    }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
-	                _react2.default.createElement('div', { id: 'last', onDrop: function onDrop(e) {
-	                        return _this2.drop(e);
-	                    }, onDragOver: function onDragOver(e) {
-	                        return _this2.allowDrop(e);
-	                    }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
-	                _react2.default.createElement('div', { id: 'least', onDrop: function onDrop(e) {
-	                        return _this2.drop(e);
-	                    }, onDragOver: function onDragOver(e) {
-	                        return _this2.allowDrop(e);
-	                    }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-md-12' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick(e) {
-	                                return _this2.onSubmit(e);
-	                            }, className: 'btn btn-primary' },
-	                        'Next'
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 12: How do you currently use the office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        null,
+	                                        'Who do you most meet informally? (In order of most at the top)'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-4' },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: 'team', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            'My team'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: 'cohort', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#ff8900', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            'My cohort'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: 'practice', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#1d7e00', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            'My practice'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { id: 'others', draggable: 'true', onDragStart: function onDragStart(e) {
+	                                                    return _this2.drag(e);
+	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#c40000', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                            'Others'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement('div', { id: 'most', onDrop: function onDrop(e) {
+	                                            return _this2.drop(e);
+	                                        }, onDragOver: function onDragOver(e) {
+	                                            return _this2.allowDrop(e);
+	                                        }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
+	                                    _react2.default.createElement('div', { id: 'more', onDrop: function onDrop(e) {
+	                                            return _this2.drop(e);
+	                                        }, onDragOver: function onDragOver(e) {
+	                                            return _this2.allowDrop(e);
+	                                        }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
+	                                    _react2.default.createElement('div', { id: 'last', onDrop: function onDrop(e) {
+	                                            return _this2.drop(e);
+	                                        }, onDragOver: function onDragOver(e) {
+	                                            return _this2.allowDrop(e);
+	                                        }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
+	                                    _react2.default.createElement('div', { id: 'least', onDrop: function onDrop(e) {
+	                                            return _this2.drop(e);
+	                                        }, onDragOver: function onDragOver(e) {
+	                                            return _this2.allowDrop(e);
+	                                        }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { onClick: function onClick(e) {
+	                                                    return _this2.onSubmit(e);
+	                                                }, className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
 	        }
 	    }]);
 
-	    return Page7;
+	    return Page12;
 	}(_react.Component);
 
 	function validate(formProps) {
@@ -46066,7 +46429,7 @@
 	    form: 'Page1',
 	    fields: ['whatAreYou'],
 	    validate: validate
-	}, null, { page7Submit: _page_actions.page7Submit })(Page7);
+	}, null, { page12Submit: _page_actions.page12Submit })(Page12);
 
 /***/ },
 /* 345 */
@@ -46098,13 +46461,13 @@
 
 	var Rcslider = __webpack_require__(346);
 
-	var Page13 = function (_Component) {
-	    _inherits(Page13, _Component);
+	var page13 = function (_Component) {
+	    _inherits(page13, _Component);
 
-	    function Page13(props) {
-	        _classCallCheck(this, Page13);
+	    function page13(props) {
+	        _classCallCheck(this, page13);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Page13).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(page13).call(this, props));
 
 	        _this.state = {
 	            RCValue: 0
@@ -46112,10 +46475,10 @@
 	        return _this;
 	    }
 
-	    _createClass(Page13, [{
+	    _createClass(page13, [{
 	        key: 'onSubmit',
 	        value: function onSubmit(e) {
-	            this.props.Page13Submit({ proportionOfMeetings: this.state.RCValue });
+	            this.props.page13Submit({ proportionOfMeetings: this.state.RCValue });
 	        }
 	    }, {
 	        key: 'render',
@@ -46128,31 +46491,66 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
-	                _react2.default.createElement(
-	                    'h4',
-	                    { style: { marginBottom: 20 } },
-	                    'What proportion of your informal or social meetings:'
-	                ),
-	                _react2.default.createElement(Rcslider, { onAfterChange: function onAfterChange(e) {
-	                        return _this2.setState({ RCValue: e });
-	                    } }),
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { style: { marginTop: 20 }, className: 'col-md-12' },
+	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick(e) {
-	                                return _this2.onSubmit(e);
-	                            }, className: 'btn btn-primary' },
-	                        'Next'
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 13: How do you currently use the office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h4',
+	                                        { style: { marginBottom: 20 } },
+	                                        'What proportion of your client meetings are:'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        { style: { color: 'skyblue', marginBottom: 20 } },
+	                                        'Formal meetings or workshops',
+	                                        _react2.default.createElement(
+	                                            'span',
+	                                            { style: { color: '#b2b2b2' } },
+	                                            ' | Informal working sessions'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(Rcslider, { onAfterChange: function onAfterChange(e) {
+	                                            return _this2.setState({ RCValue: e });
+	                                        } }),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { style: { marginTop: 20 }, className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { onClick: function onClick(e) {
+	                                                    return _this2.onSubmit(e);
+	                                                }, className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
 	        }
 	    }]);
 
-	    return Page13;
+	    return page13;
 	}(_react.Component);
 
 	function validate(formProps) {
@@ -46166,10 +46564,10 @@
 	}
 
 	exports.default = (0, _reduxForm.reduxForm)({
-	    form: 'Page13',
+	    form: 'page13',
 	    fields: ['whatAreYou'],
 	    validate: validate
-	}, null, { Page13Submit: _page_actions.Page13Submit })(Page13);
+	}, null, { page13Submit: _page_actions.page13Submit })(page13);
 
 /***/ },
 /* 346 */
@@ -51106,13 +51504,13 @@
 
 	var Rcslider = __webpack_require__(346);
 
-	var Page14 = function (_Component) {
-	    _inherits(Page14, _Component);
+	var page14 = function (_Component) {
+	    _inherits(page14, _Component);
 
-	    function Page14(props) {
-	        _classCallCheck(this, Page14);
+	    function page14(props) {
+	        _classCallCheck(this, page14);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Page14).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(page14).call(this, props));
 
 	        _this.state = {
 	            RCValue: 0
@@ -51120,10 +51518,10 @@
 	        return _this;
 	    }
 
-	    _createClass(Page14, [{
+	    _createClass(page14, [{
 	        key: 'onSubmit',
 	        value: function onSubmit(e) {
-	            this.props.Page14Submit({ timeSpentWorkingIndividually: this.state.RCValue });
+	            this.props.page14Submit({ timeSpentWorkingIndividually: this.state.RCValue });
 	        }
 	    }, {
 	        key: 'render',
@@ -51136,31 +51534,66 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
-	                _react2.default.createElement(
-	                    'h4',
-	                    { style: { marginBottom: 20 } },
-	                    '3.Of the time you spend working individually, what proportion of the work is'
-	                ),
-	                _react2.default.createElement(Rcslider, { onAfterChange: function onAfterChange(e) {
-	                        return _this2.setState({ RCValue: e });
-	                    } }),
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { style: { marginTop: 20 }, className: 'col-md-12' },
+	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick(e) {
-	                                return _this2.onSubmit(e);
-	                            }, className: 'btn btn-primary' },
-	                        'Next'
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 14: How do you currently use the office?'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        { style: { marginBottom: 20 } },
+	                                        'Of the time you spend working individually, what proportion of the work is:'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'h5',
+	                                        { style: { color: 'skyblue', marginBottom: 20 } },
+	                                        'Complex work requiring concentration',
+	                                        _react2.default.createElement(
+	                                            'span',
+	                                            { style: { color: '#b2b2b2' } },
+	                                            ' | Routine or administrative work'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(Rcslider, { onAfterChange: function onAfterChange(e) {
+	                                            return _this2.setState({ RCValue: e });
+	                                        } }),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { style: { marginTop: 20 }, className: 'col-md-12' },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { onClick: function onClick(e) {
+	                                                    return _this2.onSubmit(e);
+	                                                }, className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
 	        }
 	    }]);
 
-	    return Page14;
+	    return page14;
 	}(_react.Component);
 
 	function validate(formProps) {
@@ -51174,10 +51607,10 @@
 	}
 
 	exports.default = (0, _reduxForm.reduxForm)({
-	    form: 'Page14',
+	    form: 'page14',
 	    fields: ['whatAreYou'],
 	    validate: validate
-	}, null, { Page14Submit: _page_actions.Page14Submit })(Page14);
+	}, null, { page14Submit: _page_actions.page14Submit })(page14);
 
 /***/ },
 /* 389 */
@@ -51234,26 +51667,51 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'form-group' },
+	                        { className: 'col-md-12' },
 	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'How many days per month are you in the office?'
-	                        ),
-	                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, daysPerMonth))
-	                    ),
-	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 15'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'How many days per month are you in the office?'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, daysPerMonth))
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -51347,49 +51805,74 @@
 	            var questions = [{ id: this.props.fields.one, one: 'An allocated desk in an open plan setting', two: 'An unassigned desk, with access to quiet space' }, { id: this.props.fields.two, one: 'A shared desk in a shared office', two: 'An unassigned desk, with access to quiet space' }, { id: this.props.fields.three, one: 'An shared desk in an open plan setting', two: 'An unassigned desk, with access to quiet space' }, { id: this.props.fields.four, one: 'An allocated desk with access to multifunctional meeting space (e.g., village green)', two: 'An unassigned desk, with access to single purpose meeting space (closed rooms, white boards, access to VC)' }, { id: this.props.fields.five, one: 'An allocated desk in an open plan setting', two: 'An unassigned desk with access to private space for phone calls and VC' }, { id: this.props.fields.six, one: 'An allocated desk in an open plan setting but no defined social space', two: 'An unassigned desk with access to social space' }, { id: this.props.fields.seven, one: 'An allocated desk, among people you do not usually work with or interact with', two: 'An unassigned desk close to your team or peers' }, { id: this.props.fields.eight, one: 'Space in a shared office, with access to multifunctional meeting space (e.g., village green)', two: 'Space in an open plan setting with access to single purpose meeting space (closed rooms, white boards, access to VC)' }, { id: this.props.fields.nine, one: 'Space in a shared closed office, without access to alternative closed spaces', two: 'Space in an open plan environment with access to private space for phone calls and VC' }, { id: this.props.fields.ten, one: 'Space in a shared closed office but no defined social space', two: 'Space in an open plan environment with access to social space' }, { id: this.props.fields.eleven, one: 'Space in a shared closed office among people you do not usually work with or interact with', two: 'Space in an open plan environment close to your team or peers' }, { id: this.props.fields.twelve, one: 'Access to single purpose meeting space but no alternative closed spaces', two: 'Access to multifunctional meetings space (e.g., village green) and private space for making phone calls' }, { id: this.props.fields.thirteen, one: 'Access to single purpose meeting space but no defined social space', two: 'Access to multifunctional meetings space (e.g., village green) which can be used as both a meeting and social space' }, { id: this.props.fields.fourteen, one: 'Access to single purpose meeting space but no facility to sit close to your peers or team', two: 'Access to multifunctional meetings space (e.g., village green) and the ability to sit close to your peers or team' }, { id: this.props.fields.fifteen, one: 'Access to private space for phone calls and VC but no defined social space', two: 'Access to defined social space but no closed space for private phone calls or VC' }, { id: this.props.fields.sixteen, one: 'Access to defined social space but no facility to sit close to your peers or team', two: 'The ability to sit close to your team but no access to defined social space' }];
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
-	                    questions.map(function (e) {
-	                        if (e.id) {
-	                            return _react2.default.createElement(
-	                                'div',
+	                    'div',
+	                    { className: 'row' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'h4',
+	                                    'legend',
 	                                    null,
-	                                    'Would you prefer'
+	                                    'Question 16'
 	                                ),
 	                                _react2.default.createElement(
 	                                    'div',
-	                                    { className: 'form-check' },
+	                                    { className: 'col-md-8 offset-xs-2' },
 	                                    _react2.default.createElement(
-	                                        'label',
-	                                        { className: 'form-check-label' },
-	                                        _react2.default.createElement('input', _extends({}, e.id, { className: 'form-check-input', type: 'radio', value: e.id.name })),
-	                                        e.one
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'form-check' },
-	                                    _react2.default.createElement(
-	                                        'label',
-	                                        { className: 'form-check-label' },
-	                                        _react2.default.createElement('input', _extends({}, e.id, { className: 'form-check-input', type: 'radio', value: e.id.name })),
-	                                        e.two
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        questions.map(function (e) {
+	                                            if (e.id) {
+	                                                return _react2.default.createElement(
+	                                                    'div',
+	                                                    null,
+	                                                    _react2.default.createElement(
+	                                                        'h4',
+	                                                        null,
+	                                                        'Would you prefer'
+	                                                    ),
+	                                                    _react2.default.createElement(
+	                                                        'div',
+	                                                        { className: 'form-check' },
+	                                                        _react2.default.createElement(
+	                                                            'label',
+	                                                            { className: 'form-check-label' },
+	                                                            _react2.default.createElement('input', _extends({}, e.id, { className: 'form-check-input', type: 'radio', value: e.id.name })),
+	                                                            e.one
+	                                                        )
+	                                                    ),
+	                                                    _react2.default.createElement(
+	                                                        'div',
+	                                                        { className: 'form-check' },
+	                                                        _react2.default.createElement(
+	                                                            'label',
+	                                                            { className: 'form-check-label' },
+	                                                            _react2.default.createElement('input', _extends({}, e.id, { className: 'form-check-input', type: 'radio', value: e.id.name })),
+	                                                            e.two
+	                                                        )
+	                                                    )
+	                                                );
+	                                            }
+	                                        }),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
 	                                    )
 	                                )
-	                            );
-	                        }
-	                    }),
-	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -51482,40 +51965,60 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Satisfaction'
-	                ),
-	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
-	                    SATISFACTION.map(function (e) {
-	                        return _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            e.Q,
-	                            A.map(function (v) {
-	                                return _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'form-check' },
-	                                    _react2.default.createElement(
-	                                        'label',
-	                                        { className: 'form-check-label' },
-	                                        _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
-	                                        v.name
-	                                    )
-	                                );
-	                            })
-	                        );
-	                    }),
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 17'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        SATISFACTION.map(function (e) {
+	                                            return _react2.default.createElement(
+	                                                'div',
+	                                                null,
+	                                                e.Q,
+	                                                A.map(function (v) {
+	                                                    return _react2.default.createElement(
+	                                                        'div',
+	                                                        { className: 'form-check' },
+	                                                        _react2.default.createElement(
+	                                                            'label',
+	                                                            { className: 'form-check-label' },
+	                                                            _react2.default.createElement('input', _extends({}, e.fieldValue, { className: 'form-check-input', type: 'radio', value: v.value })),
+	                                                            v.name
+	                                                        )
+	                                                    );
+	                                                })
+	                                            );
+	                                        }),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -51598,76 +52101,101 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'form-group' },
+	                        { className: 'col-md-12' },
 	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'What impact do you think the design of the current office has on its corporate image?'
-	                        ),
-	                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, designImpactCor))
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'What impact do you think the design of the current office has on its environmental sustainability?'
-	                        ),
-	                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, designImpactEnv))
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Would you benefit from a dedicated social space?'
-	                        ),
-	                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, dedicatedSocialSpace))
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'What could improve workspace interaction?'
-	                        ),
-	                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, workspaceInteraction))
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Please provide 3 words to describe your current workplace'
-	                        ),
-	                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, currentWork3))
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Please provide 3 words to describe you ideal future workplace'
-	                        ),
-	                        _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, futureWork3))
-	                    ),
-	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Next'
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Question 18: Future space'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'What impact do you think the design of the current office has on its corporate image?'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, designImpactCor))
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'What impact do you think the design of the current office has on its environmental sustainability?'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, designImpactEnv))
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'Would you benefit from a dedicated social space?'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, dedicatedSocialSpace))
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'What could improve workspace interaction?'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, workspaceInteraction))
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'Please provide 3 words to describe your current workplace'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, currentWork3))
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'Please provide 3 words to describe you ideal future workplace'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, futureWork3))
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Next'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
@@ -51746,21 +52274,41 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 offset-xs-2' },
+	                { className: 'container' },
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Finish Surey'
-	                ),
-	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'form', onSubmit: handleSubmit(function (e) {
-	                            return _this2.onSubmit(e);
-	                        }) },
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Finish'
+	                        'div',
+	                        { className: 'col-md-12' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'well bs-component' },
+	                            _react2.default.createElement(
+	                                'fieldset',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'legend',
+	                                    null,
+	                                    'Finish Survey'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'form',
+	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
+	                                                return _this2.onSubmit(e);
+	                                            }) },
+	                                        _react2.default.createElement(
+	                                            'button',
+	                                            { type: 'submit', className: 'btn btn-primary' },
+	                                            'Finish & Submit'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );

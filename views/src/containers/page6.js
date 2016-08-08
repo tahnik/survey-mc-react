@@ -75,8 +75,13 @@ class Page6 extends Component {
             physicalWellbeing
         }, handleSubmit} = this.props;
         return(
+            <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 6: Satisfaction</legend>
             <div className="col-md-8 offset-xs-2">
-                <h3>Satisfaction</h3>
                 <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                     {SATISFACTION.map((e) => {
                         if(e.selectionType == 'S'){
@@ -142,6 +147,11 @@ class Page6 extends Component {
                     })}
                     <button type="submit" className="btn btn-primary">Next</button>
                 </form>
+            </div>
+        </fieldset>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

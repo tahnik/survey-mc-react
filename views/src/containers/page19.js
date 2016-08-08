@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import { Page19Submit } from '../actions/page_actions';
+import { page19Submit } from '../actions/page_actions';
 import { browserHistory } from 'react-router';
 
-class Page19 extends Component {
+class page19 extends Component {
     onSubmit(e) {
-        this.props.Page19Submit(this.props.pageData);
+        this.props.page19Submit(this.props.pageData);
     }
     render() {
         const {fields: {role, specificDetails}, handleSubmit} = this.props;
         return(
+             <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Finish Survey</legend>
             <div className="col-md-8 offset-xs-2">
-                <h3>Finish Surey</h3>
                 <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
-                    <button type="submit" className="btn btn-primary">Finish</button>
+                    <button type="submit" className="btn btn-primary">Finish &amp; Submit</button>
                 </form>
+            </div>
+            </fieldset>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -27,6 +37,6 @@ function mapStateToProps(state) {
 }
 
 export default reduxForm({
-	form: 'Page19',
+	form: 'page19',
 	fields: ['role', 'specificDetails']
-}, mapStateToProps, { Page19Submit })(Page19);
+}, mapStateToProps, { page19Submit })(page19);

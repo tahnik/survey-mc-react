@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { page17Submit } from '../actions/page_actions';
 
-class Page17 extends Component {
+class page17 extends Component {
     onSubmit(e) {
         this.props.page17Submit(e);
     }
@@ -34,8 +34,13 @@ class Page17 extends Component {
         console.log(this.props.fields.satisfiedLondon);
         const {fields: {one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve}, handleSubmit} = this.props;
         return(
+            <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 17</legend>
             <div className="col-md-8 offset-xs-2">
-                <h3>Satisfaction</h3>
                 <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                     {SATISFACTION.map((e) => {
                         return(
@@ -57,6 +62,11 @@ class Page17 extends Component {
                     <button type="submit" className="btn btn-primary">Next</button>
                 </form>
             </div>
+            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
@@ -69,7 +79,7 @@ function validate(formProps) {
 }
 
 export default reduxForm({
-	form: 'Page17',
+	form: 'page17',
 	fields: ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'],
 	validate
-}, null, { page17Submit })(Page17);
+}, null, { page17Submit })(page17);

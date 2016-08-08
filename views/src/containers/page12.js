@@ -49,18 +49,25 @@ class Page12 extends Component {
     render() {
         const {fields: {whatAreYou}, handleSubmit} = this.props;
         return(
+            <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 12: How do you currently use the office?</legend>
             <div className="col-md-8 offset-xs-2">
+                <h5>Who do you most meet informally? (In order of most at the top)</h5>
                 <div className="col-md-4">
-                    <div id="team" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' }}>
+                    <div id="team" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#0062c4', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' }}>
                         My team
                     </div>
-                    <div id="cohort" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white'  }}>
+                    <div id="cohort" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#ff8900', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center'  }}>
                         My cohort
                     </div>
-                    <div id="practice" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white'  }}>
+                    <div id="practice" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#1d7e00', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center'  }}>
                         My practice
                     </div>
-                    <div id="others" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white'  }}>
+                    <div id="others" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#c40000', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center'  }}>
                         Others
                     </div>
                 </div>
@@ -78,6 +85,11 @@ class Page12 extends Component {
                 </div>
                 <div className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>
+                </div>
+            </div>
+             </fieldset>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

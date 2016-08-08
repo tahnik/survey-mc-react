@@ -171,7 +171,7 @@ export function page18Submit(props) {
     }
 }
 
-export function Page19Submit(props) {
+export function page19Submit(props) {
     const url = "https://survey-6242b.firebaseio.com/users/users.json";
     console.log(props.credentials.email);
     var props = {

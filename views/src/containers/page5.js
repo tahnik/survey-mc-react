@@ -18,8 +18,14 @@ class Page5 extends Component {
     render() {
         const {fields: {usualWorkspace}, handleSubmit} = this.props;
         return(
+            <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 5: What is your usual workspace in London office?</legend>
             <div className="col-md-8 offset-xs-2">
-                <h3>What is your usual workspace in London office?</h3>
+
                 <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                     {USUAL_WORKSPACE.map((e) => {
                         return (
@@ -34,6 +40,11 @@ class Page5 extends Component {
                     {usualWorkspace.touched && usualWorkspace.error && <div className="form-control-feedback">{usualWorkspace.error}</div>}
                     <button type="submit" className="btn btn-primary">Next</button>
                 </form>
+            </div>
+         </fieldset>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -62,18 +62,25 @@ class Page7 extends Component {
     render() {
         const {fields: {whatAreYou}, handleSubmit} = this.props;
         return(
-            <div className="col-md-8 offset-xs-2">
+            <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 7: How do you currently use the office?</legend>
+            <div className="col-md-10 offset-xs-1">
+                <h5>Proportion of time spent on: (Starting from the beginning of the day at the top)</h5>
                 <div className="col-md-4">
-                    <div id="1hIW" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' }}>
+                    <div id="1hIW" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' }}>
                         1hr Individual Work
                     </div>
-                    <div id="1hFM" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white'  }}>
+                    <div id="1hFM" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#ff8900', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center'  }}>
                         1hr Formal Meetings
                     </div>
-                    <div id="1hSO" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white'  }}>
+                    <div id="1hSO" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#1d7e00', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center'  }}>
                         1hr Social
                     </div>
-                    <div id="1hCL" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white'  }}>
+                    <div id="1hCL" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#c40000', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' }}>
                         1hr Clients
                     </div>
                 </div>
@@ -82,6 +89,11 @@ class Page7 extends Component {
                 </div>
                 <div className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>
+                </div>
+            </div>
+            </fieldset>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

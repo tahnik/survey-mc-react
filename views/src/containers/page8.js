@@ -68,32 +68,44 @@ class Page8 extends Component {
     render() {
         const {fields: {whatAreYou}, handleSubmit} = this.props;
         return(
-            <div className="col-md-8 offset-xs-2">
+            <div className="container">
+            <div className="row">
                 <div className="col-md-12">
-                    <div id="0.5h" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-4" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white' }}>
+                    <div className="well bs-component">
+                        <fieldset>
+                            <legend>Question 8: How do you currently use the office?</legend>
+            <div className="col-md-8 offset-xs-2">
+                <h5>Of the time you spend collaborating with colleagues in formal meetings, what proportion of this is:</h5>
+                <div className="col-md-12">
+                    <div id="0.5h" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-4" style={{ backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' }}>
                         1/2hr
                     </div>
-                    <div id="1h" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-4" style={{ backgroundColor: 'red', height: '3em', marginBottom: '1em', color: 'white'  }}>
+                    <div id="1h" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-4" style={{ backgroundColor: '#ff9300', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center'  }}>
                         1hr
                     </div>
                 </div>
                 <div id="remoteMeetings" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ height: '40vh' }}>
-                    <div className="col-md-10 col-md-offset-1" style={{ height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 }}>
+                    <div className="col-md-10 col-md-offset-1" style={{ height: '30px', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px'  }}>
                         <h6 className="text-xs-center">Remote Meeting</h6>
                     </div>
                 </div>
                 <div id="inPerson" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ height: '40vh' }}>
-                    <div className="col-md-10 col-md-offset-1" style={{ height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 }}>
+                    <div className="col-md-10 col-md-offset-1" style={{ height: '30px', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px'  }}>
                         <h6 className="text-xs-center">In person</h6>
                     </div>
                 </div>
                 <div id="formalEvents" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ height: '40vh' }}>
-                    <div className="col-md-10 col-md-offset-1" style={{ height: '20px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0 }}>
+                    <div className="col-md-10 col-md-offset-1" style={{ height: '30px', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px'  }}>
                         <h6 className="text-xs-center">Formal events</h6>
                     </div>
                 </div>
                 <div className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>
+                </div>
+            </div>
+                    </fieldset>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
