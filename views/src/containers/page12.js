@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { reduxForm } from 'redux-form';
-import { page7Submit } from '../actions/page_actions';
+import { page12Submit } from '../actions/page_actions';
 import $ from 'jquery';
 
-class Page7 extends Component {
+class Page12 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +26,7 @@ class Page7 extends Component {
             last: last,
             least: least
         }
-        this.props.page7Submit(props);
+        this.props.page12Submit(props);
     }
     drop(ev) {
         var data = ev.dataTransfer.getData("text");
@@ -98,4 +98,4 @@ export default reduxForm({
 	form: 'Page1',
 	fields: ['whatAreYou'],
 	validate
-}, null, { page7Submit })(Page7);
+}, null, { page12Submit })(Page12);
