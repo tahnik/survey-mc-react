@@ -1,9 +1,35 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { Signin } from '../actions/page_actions';
+import axios from 'axios';
+
 
 class Intro extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: {}
+        }
+    }
+    componentDidMount() {
+        axios.get('https://survey-6242b.firebaseio.com/users.json')
+        .then((response) => {
+            var usersJSON = response.data;
+
+            this.setState({ users: usersJSON })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
     onSubmit(e) {
+        var users = this.state.users;
+        for(var id in users){
+            if(users[id] == e.email){
+                window.alert("You've already taken the survey");
+                return;
+            }
+        }
         this.props.Signin(e);
     }
     render() {
@@ -53,9 +79,13 @@ function validate(formProps) {
 
 	if (!formProps.password) {
 		errors.password = 'Please enter a password';
-	}else if(PASSWORD_VALIDATOR_REGEX.exec(formProps.password) === null) {
-		errors.password = "Password must have an Uppercase and Lowercase Letter and a number. It must be at least 6 characters long"
-	}
+	}else if(formProps.password != "connecteds") {
+        errors.password = "Wrong password";
+    }
+
+    if(!formProps.email) {
+        errors.email = "Please enter an email";
+    }
 
 	return errors;
 }

@@ -42,10 +42,16 @@ class Page7 extends Component {
         this.props.page7Submit(props);
     }
     drop(ev) {
+        if(ev.target.id != "droppedHours") {
+            return;
+        }
         var data = ev.dataTransfer.getData("text");
         var clonedNode = document.getElementById(data).cloneNode(true);
         $(clonedNode).addClass('cardBottom');
-        if(this.state.totalDragged < 8) {
+        $(clonedNode).on('dragend', function (e) {
+            this.remove();
+        })
+        if(this.state.totalDragged < 20) {
             ev.target.appendChild(clonedNode);
         }
         var droppedHole = document.getElementById('droppedHours');
@@ -84,7 +90,7 @@ class Page7 extends Component {
                         1hr Clients
                     </div>
                 </div>
-                <div id="droppedHours" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-8" style={{ borderLeft: "10px solid grey", borderBottom: "10px solid grey", height: '65vh', float: 'right' }}>
+                <div id="droppedHours" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-8" style={{ borderLeft: "10px solid grey", borderBottom: "10px solid grey", minHeight: '65vh', paddingBottom: '4em' }}>
 
                 </div>
                 <div className="col-md-12">

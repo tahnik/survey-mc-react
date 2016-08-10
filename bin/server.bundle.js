@@ -54,8 +54,8 @@
 
 	app.use('/*', index);
 
-	app.listen(3000, function () {
-		console.log('Hello World listening on port 3000!');
+	app.listen(3001, function () {
+		console.log('Hello World listening on port 3001!');
 	});
 
 /***/ },
@@ -78,19 +78,19 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _index = __webpack_require__(36);
+	var _index = __webpack_require__(37);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _redux = __webpack_require__(37);
+	var _redux = __webpack_require__(38);
 
-	var _reactRedux = __webpack_require__(39);
+	var _reactRedux = __webpack_require__(40);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var express = __webpack_require__(1);
 	var router = express.Router();
-	var path = __webpack_require__(40);
+	var path = __webpack_require__(41);
 
 	var React = __webpack_require__(6);
 
@@ -156,6 +156,10 @@
 
 	var _reactRouter = __webpack_require__(4);
 
+	var _require_email = __webpack_require__(42);
+
+	var _require_email2 = _interopRequireDefault(_require_email);
+
 	var _header = __webpack_require__(7);
 
 	var _header2 = _interopRequireDefault(_header);
@@ -164,87 +168,87 @@
 
 	var _intro2 = _interopRequireDefault(_intro);
 
-	var _page = __webpack_require__(12);
+	var _page = __webpack_require__(13);
 
 	var _page2 = _interopRequireDefault(_page);
 
-	var _page3 = __webpack_require__(13);
+	var _page3 = __webpack_require__(14);
 
 	var _page4 = _interopRequireDefault(_page3);
 
-	var _page5 = __webpack_require__(15);
+	var _page5 = __webpack_require__(16);
 
 	var _page6 = _interopRequireDefault(_page5);
 
-	var _page7 = __webpack_require__(16);
+	var _page7 = __webpack_require__(17);
 
 	var _page8 = _interopRequireDefault(_page7);
 
-	var _page9 = __webpack_require__(17);
+	var _page9 = __webpack_require__(18);
 
 	var _page10 = _interopRequireDefault(_page9);
 
-	var _page11 = __webpack_require__(18);
+	var _page11 = __webpack_require__(19);
 
 	var _page12 = _interopRequireDefault(_page11);
 
-	var _page13 = __webpack_require__(19);
+	var _page13 = __webpack_require__(20);
 
 	var _page14 = _interopRequireDefault(_page13);
 
-	var _page15 = __webpack_require__(21);
+	var _page15 = __webpack_require__(22);
 
 	var _page16 = _interopRequireDefault(_page15);
 
-	var _page17 = __webpack_require__(22);
+	var _page17 = __webpack_require__(23);
 
 	var _page18 = _interopRequireDefault(_page17);
 
-	var _page19 = __webpack_require__(23);
+	var _page19 = __webpack_require__(24);
 
 	var _page20 = _interopRequireDefault(_page19);
 
-	var _page21 = __webpack_require__(24);
+	var _page21 = __webpack_require__(25);
 
 	var _page22 = _interopRequireDefault(_page21);
 
-	var _page23 = __webpack_require__(25);
+	var _page23 = __webpack_require__(26);
 
 	var _page24 = _interopRequireDefault(_page23);
 
-	var _page25 = __webpack_require__(26);
+	var _page25 = __webpack_require__(27);
 
 	var _page26 = _interopRequireDefault(_page25);
 
-	var _page27 = __webpack_require__(28);
+	var _page27 = __webpack_require__(29);
 
 	var _page28 = _interopRequireDefault(_page27);
 
-	var _page29 = __webpack_require__(29);
+	var _page29 = __webpack_require__(30);
 
 	var _page30 = _interopRequireDefault(_page29);
 
-	var _page31 = __webpack_require__(30);
+	var _page31 = __webpack_require__(31);
 
 	var _page32 = _interopRequireDefault(_page31);
 
-	var _page33 = __webpack_require__(31);
+	var _page33 = __webpack_require__(32);
 
 	var _page34 = _interopRequireDefault(_page33);
 
-	var _page35 = __webpack_require__(32);
+	var _page35 = __webpack_require__(33);
 
 	var _page36 = _interopRequireDefault(_page35);
 
-	var _page37 = __webpack_require__(33);
+	var _page37 = __webpack_require__(34);
 
 	var _page38 = _interopRequireDefault(_page37);
 
-	var _page39 = __webpack_require__(34);
+	var _page39 = __webpack_require__(35);
 
 	var _page40 = _interopRequireDefault(_page39);
 
-	var _page41 = __webpack_require__(35);
+	var _page41 = __webpack_require__(36);
 
 	var _page42 = _interopRequireDefault(_page41);
 
@@ -257,25 +261,25 @@
 	        _reactRouter.Route,
 	        { path: '/', component: _header2.default },
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _intro2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/page1', component: _page2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page2', component: _page4.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page3', component: _page6.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page4', component: _page8.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page5', component: _page10.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page6', component: _page12.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page7', component: _page14.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page8', component: _page16.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page9', component: _page18.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page10', component: _page20.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page11', component: _page22.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page12', component: _page24.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page13', component: _page26.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page14', component: _page28.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page15', component: _page30.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page16', component: _page32.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page17', component: _page34.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page18', component: _page36.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/Page19', component: _page38.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/page1', component: (0, _require_email2.default)(_page2.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page2', component: (0, _require_email2.default)(_page4.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page3', component: (0, _require_email2.default)(_page6.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page4', component: (0, _require_email2.default)(_page8.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page5', component: (0, _require_email2.default)(_page10.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page6', component: (0, _require_email2.default)(_page12.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page7', component: (0, _require_email2.default)(_page14.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page8', component: (0, _require_email2.default)(_page16.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page9', component: (0, _require_email2.default)(_page18.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page10', component: (0, _require_email2.default)(_page20.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page11', component: (0, _require_email2.default)(_page22.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page12', component: (0, _require_email2.default)(_page24.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page13', component: (0, _require_email2.default)(_page26.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page14', component: (0, _require_email2.default)(_page28.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page15', component: (0, _require_email2.default)(_page30.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page16', component: (0, _require_email2.default)(_page32.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page17', component: (0, _require_email2.default)(_page34.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page18', component: (0, _require_email2.default)(_page36.default) }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/Page19', component: (0, _require_email2.default)(_page38.default) }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/Page20', component: _page40.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/Page21', component: _page42.default })
 	    )
@@ -548,6 +552,10 @@
 
 	var _page_actions = __webpack_require__(10);
 
+	var _axios = __webpack_require__(11);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -559,21 +567,46 @@
 	var Intro = function (_Component) {
 	    _inherits(Intro, _Component);
 
-	    function Intro() {
+	    function Intro(props) {
 	        _classCallCheck(this, Intro);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Intro).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Intro).call(this, props));
+
+	        _this.state = {
+	            users: {}
+	        };
+	        return _this;
 	    }
 
 	    _createClass(Intro, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+
+	            _axios2.default.get('https://survey-6242b.firebaseio.com/users.json').then(function (response) {
+	                var usersJSON = response.data;
+
+	                _this2.setState({ users: usersJSON });
+	            }).catch(function (error) {
+	                console.log(error);
+	            });
+	        }
+	    }, {
 	        key: 'onSubmit',
 	        value: function onSubmit(e) {
+	            var users = this.state.users;
+	            for (var id in users) {
+	                if (users[id] == e.email) {
+	                    window.alert("You've already taken the survey");
+	                    return;
+	                }
+	            }
 	            this.props.Signin(e);
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            var _props = this.props;
 	            var _props$fields = _props.fields;
@@ -607,7 +640,7 @@
 	                                    _react2.default.createElement(
 	                                        'form',
 	                                        { className: 'form-horizontal', onSubmit: handleSubmit(function (e) {
-	                                                return _this2.onSubmit(e);
+	                                                return _this3.onSubmit(e);
 	                                            }) },
 	                                        _react2.default.createElement(
 	                                            'div',
@@ -679,8 +712,12 @@
 
 	    if (!formProps.password) {
 	        errors.password = 'Please enter a password';
-	    } else if (PASSWORD_VALIDATOR_REGEX.exec(formProps.password) === null) {
-	        errors.password = "Password must have an Uppercase and Lowercase Letter and a number. It must be at least 6 characters long";
+	    } else if (formProps.password != "connecteds") {
+	        errors.password = "Wrong password";
+	    }
+
+	    if (!formProps.email) {
+	        errors.email = "Please enter an email";
 	    }
 
 	    return errors;
@@ -726,7 +763,7 @@
 	exports.page16Submit = page16Submit;
 	exports.page17Submit = page17Submit;
 	exports.page18Submit = page18Submit;
-	exports.Page19Submit = Page19Submit;
+	exports.page19Submit = page19Submit;
 
 	var _reactRouter = __webpack_require__(4);
 
@@ -734,7 +771,13 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _crypto = __webpack_require__(12);
+
+	var _crypto2 = _interopRequireDefault(_crypto);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function Signin(props) {
 	    _reactRouter.browserHistory.push('/page1');
@@ -905,15 +948,22 @@
 	    };
 	}
 
-	function Page19Submit(props) {
-	    var url = "https://survey-6242b.firebaseio.com/users/users.json";
-	    console.log(props.credentials.email);
-	    var props = {
-	        email: props.credentials.email,
-	        data: props
-	    };
-
-	    var request = _axios2.default.post(url, props);
+	function page19Submit(props) {
+	    _crypto2.default.randomBytes(5, function (err, buf) {
+	        if (err) {
+	            console.log(err);
+	        } else {
+	            var userRandomNumber = buf.toString('hex');
+	            var userDataurl = 'https://survey-6242b.firebaseio.com/userData.json';
+	            var usersurl = 'https://survey-6242b.firebaseio.com/users.json';
+	            var email = props.credentials.email;
+	            var users = _defineProperty({}, userRandomNumber, email);
+	            var userData = _defineProperty({}, userRandomNumber, props);
+	            //console.log(props);
+	            var userRequest = _axios2.default.patch(usersurl, users);
+	            var userDataRequest = _axios2.default.patch(userDataurl, userData);
+	        }
+	    });
 
 	    return {
 	        type: "FINISH"
@@ -928,6 +978,12 @@
 
 /***/ },
 /* 12 */
+/***/ function(module, exports) {
+
+	module.exports = require("crypto");
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1077,7 +1133,7 @@
 	}, null, { page1Submit: _page_actions.page1Submit })(Page1);
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1098,7 +1154,7 @@
 
 	var _page_actions = __webpack_require__(10);
 
-	var _jquery = __webpack_require__(14);
+	var _jquery = __webpack_require__(15);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -1323,13 +1379,13 @@
 	}, null, { page2Submit: _page_actions.page2Submit })(Page2);
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = require("jquery");
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1509,7 +1565,7 @@
 	}, mapStateToProps, { page3Submit: _page_actions.page3Submit })(Page3);
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1643,7 +1699,7 @@
 	}, null, { page4Submit: _page_actions.page4Submit })(Page4);
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1777,7 +1833,7 @@
 	}, null, { page5Submit: _page_actions.page5Submit })(Page5);
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1982,7 +2038,7 @@
 	}, null, { page6Submit: _page_actions.page6Submit })(Page6);
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1997,7 +2053,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(20);
+	var _reactDom = __webpack_require__(21);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2005,7 +2061,7 @@
 
 	var _page_actions = __webpack_require__(10);
 
-	var _jquery = __webpack_require__(14);
+	var _jquery = __webpack_require__(15);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -2068,10 +2124,16 @@
 	    }, {
 	        key: 'drop',
 	        value: function drop(ev) {
+	            if (ev.target.id != "droppedHours") {
+	                return;
+	            }
 	            var data = ev.dataTransfer.getData("text");
 	            var clonedNode = document.getElementById(data).cloneNode(true);
 	            (0, _jquery2.default)(clonedNode).addClass('cardBottom');
-	            if (this.state.totalDragged < 8) {
+	            (0, _jquery2.default)(clonedNode).on('dragend', function (e) {
+	                this.remove();
+	            });
+	            if (this.state.totalDragged < 20) {
 	                ev.target.appendChild(clonedNode);
 	            }
 	            var droppedHole = document.getElementById('droppedHours');
@@ -2162,7 +2224,7 @@
 	                                            return _this2.drop(e);
 	                                        }, onDragOver: function onDragOver(e) {
 	                                            return _this2.allowDrop(e);
-	                                        }, className: 'col-md-8', style: { borderLeft: "10px solid grey", borderBottom: "10px solid grey", height: '65vh', float: 'right' } }),
+	                                        }, className: 'col-md-8', style: { borderLeft: "10px solid grey", borderBottom: "10px solid grey", minHeight: '65vh', paddingBottom: '4em' } }),
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        { className: 'col-md-12' },
@@ -2203,13 +2265,13 @@
 	}, null, { page7Submit: _page_actions.page7Submit })(Page7);
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = require("react-dom");
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2224,7 +2286,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(20);
+	var _reactDom = __webpack_require__(21);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2232,7 +2294,7 @@
 
 	var _page_actions = __webpack_require__(10);
 
-	var _jquery = __webpack_require__(14);
+	var _jquery = __webpack_require__(15);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -2298,10 +2360,16 @@
 	    }, {
 	        key: 'drop',
 	        value: function drop(ev) {
+	            if (ev.target.id != "remoteMeetings" && ev.target.id != "inPerson" && ev.target.id != "formalEvents") {
+	                return;
+	            }
 	            var data = ev.dataTransfer.getData("text");
 	            var clonedNode = document.getElementById(data).cloneNode(true);
 	            (0, _jquery2.default)(clonedNode).removeClass('col-md-4');
 	            (0, _jquery2.default)(clonedNode).addClass('col-md-12');
+	            (0, _jquery2.default)(clonedNode).on('dragend', function (e) {
+	                this.remove();
+	            });
 	            if (this.state.totalDragged < 8) {
 	                ev.target.appendChild(clonedNode);
 	            }
@@ -2319,6 +2387,13 @@
 	        key: 'allowDrop',
 	        value: function allowDrop(ev) {
 	            ev.preventDefault();
+	        }
+	    }, {
+	        key: 'deleteDropped',
+	        value: function deleteDropped(ev) {
+	            var data = ev.dataTransfer.getData("text");
+	            var Node = document.getElementById(data);
+	            console.log(Node);
 	        }
 	    }, {
 	        key: 'render',
@@ -2364,7 +2439,7 @@
 	                                            'div',
 	                                            { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
 	                                                    return _this2.drag(e);
-	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center', marginRight: '2em' } },
 	                                            '1/2hr'
 	                                        ),
 	                                        _react2.default.createElement(
@@ -2381,15 +2456,11 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '50vh', paddingBottom: '5em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
-	                                            _react2.default.createElement(
-	                                                'h6',
-	                                                { className: 'text-xs-center' },
-	                                                'Remote Meeting'
-	                                            )
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '2em', textAlign: 'center', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            'Remote Meeting'
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
@@ -2398,15 +2469,11 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '50vh', paddingBottom: '5em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
-	                                            _react2.default.createElement(
-	                                                'h6',
-	                                                { className: 'text-xs-center' },
-	                                                'In person'
-	                                            )
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '2em', textAlign: 'center', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            'In person'
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
@@ -2415,15 +2482,11 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '50vh', paddingBottom: '5em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
-	                                            _react2.default.createElement(
-	                                                'h6',
-	                                                { className: 'text-xs-center' },
-	                                                'Formal events'
-	                                            )
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '2em', textAlign: 'center', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            'Formal events'
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
@@ -2466,7 +2529,7 @@
 	}, null, { page8Submit: _page_actions.page8Submit })(Page8);
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2481,7 +2544,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(20);
+	var _reactDom = __webpack_require__(21);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2489,7 +2552,7 @@
 
 	var _page_actions = __webpack_require__(10);
 
-	var _jquery = __webpack_require__(14);
+	var _jquery = __webpack_require__(15);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -2555,10 +2618,16 @@
 	    }, {
 	        key: 'drop',
 	        value: function drop(ev) {
+	            if (ev.target.id != "oneToOne" && ev.target.id != "threeToFive" && ev.target.id != "moreThan5") {
+	                return;
+	            }
 	            var data = ev.dataTransfer.getData("text");
 	            var clonedNode = document.getElementById(data).cloneNode(true);
 	            (0, _jquery2.default)(clonedNode).removeClass('col-md-4');
 	            (0, _jquery2.default)(clonedNode).addClass('col-md-12');
+	            (0, _jquery2.default)(clonedNode).on('dragend', function (e) {
+	                this.remove();
+	            });
 	            if (this.state.totalDragged < 8) {
 	                ev.target.appendChild(clonedNode);
 	            }
@@ -2621,7 +2690,7 @@
 	                                            'div',
 	                                            { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
 	                                                    return _this2.drag(e);
-	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center', marginRight: '2em' } },
 	                                            '1/2hr'
 	                                        ),
 	                                        _react2.default.createElement(
@@ -2638,10 +2707,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '40vh', paddingBottom: '5em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '2em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -2655,10 +2724,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '40vh', paddingBottom: '5em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '2em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -2672,10 +2741,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '40vh', paddingBottom: '5em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '30px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '2em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -2723,7 +2792,7 @@
 	}, null, { page9Submit: _page_actions.page9Submit })(Page9);
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2738,7 +2807,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(20);
+	var _reactDom = __webpack_require__(21);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2746,7 +2815,7 @@
 
 	var _page_actions = __webpack_require__(10);
 
-	var _jquery = __webpack_require__(14);
+	var _jquery = __webpack_require__(15);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -2812,10 +2881,16 @@
 	    }, {
 	        key: 'drop',
 	        value: function drop(ev) {
+	            if (ev.target.id != "planEx" && ev.target.id != "FeDev" && ev.target.id != "CrPro") {
+	                return;
+	            }
 	            var data = ev.dataTransfer.getData("text");
 	            var clonedNode = document.getElementById(data).cloneNode(true);
 	            (0, _jquery2.default)(clonedNode).removeClass('col-md-4');
 	            (0, _jquery2.default)(clonedNode).addClass('col-md-12');
+	            (0, _jquery2.default)(clonedNode).on('dragend', function (e) {
+	                this.remove();
+	            });
 	            if (this.state.totalDragged < 8) {
 	                ev.target.appendChild(clonedNode);
 	            }
@@ -2878,7 +2953,7 @@
 	                                            'div',
 	                                            { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
 	                                                    return _this2.drag(e);
-	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center', marginRight: '2em' } },
 	                                            '1/2hr'
 	                                        ),
 	                                        _react2.default.createElement(
@@ -2895,10 +2970,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '50vh', paddingBottom: '6em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '3em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -2912,10 +2987,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '50vh', paddingBottom: '6em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '3em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -2929,10 +3004,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '50vh', paddingBottom: '6em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '3em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -2980,7 +3055,7 @@
 	}, null, { page10Submit: _page_actions.page10Submit })(Page10);
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2995,7 +3070,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(20);
+	var _reactDom = __webpack_require__(21);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -3003,7 +3078,7 @@
 
 	var _page_actions = __webpack_require__(10);
 
-	var _jquery = __webpack_require__(14);
+	var _jquery = __webpack_require__(15);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -3069,10 +3144,16 @@
 	    }, {
 	        key: 'drop',
 	        value: function drop(ev) {
+	            if (ev.target.id != "NoCo" && ev.target.id != "SOCO" && ev.target.id != "HICO") {
+	                return;
+	            }
 	            var data = ev.dataTransfer.getData("text");
 	            var clonedNode = document.getElementById(data).cloneNode(true);
 	            (0, _jquery2.default)(clonedNode).removeClass('col-md-4');
 	            (0, _jquery2.default)(clonedNode).addClass('col-md-12');
+	            (0, _jquery2.default)(clonedNode).on('dragend', function (e) {
+	                this.remove();
+	            });
 	            if (this.state.totalDragged < 8) {
 	                ev.target.appendChild(clonedNode);
 	            }
@@ -3135,7 +3216,7 @@
 	                                            'div',
 	                                            { id: '0.5h', draggable: 'true', onDragStart: function onDragStart(e) {
 	                                                    return _this2.drag(e);
-	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
+	                                                }, className: 'col-md-4', style: { backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center', marginRight: '2em' } },
 	                                            '1/2hr'
 	                                        ),
 	                                        _react2.default.createElement(
@@ -3152,10 +3233,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '40vh', paddingBottom: '6em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '3em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -3169,10 +3250,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '40vh', paddingBottom: '6em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '3em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -3186,10 +3267,10 @@
 	                                                return _this2.drop(e);
 	                                            }, onDragOver: function onDragOver(e) {
 	                                                return _this2.allowDrop(e);
-	                                            }, className: 'col-md-4', style: { height: '40vh' } },
+	                                            }, className: 'col-md-4', style: { minHeight: '40vh', paddingBottom: '6em' } },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '50px', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
+	                                            { className: 'col-md-10 col-md-offset-1', style: { height: '3em', paddingTop: '7px', backgroundColor: 'skyblue', position: 'absolute', bottom: 0, borderRadius: '5px' } },
 	                                            _react2.default.createElement(
 	                                                'h6',
 	                                                { className: 'text-xs-center' },
@@ -3237,7 +3318,7 @@
 	}, null, { page11Submit: _page_actions.page11Submit })(Page11);
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3252,7 +3333,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(20);
+	var _reactDom = __webpack_require__(21);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -3260,7 +3341,7 @@
 
 	var _page_actions = __webpack_require__(10);
 
-	var _jquery = __webpack_require__(14);
+	var _jquery = __webpack_require__(15);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -3313,6 +3394,9 @@
 	            var data = ev.dataTransfer.getData("text");
 	            var clonedNode = document.getElementById(data).cloneNode(true);
 	            (0, _jquery2.default)(clonedNode).addClass('cardBottom');
+	            (0, _jquery2.default)(clonedNode).on('dragend', function (e) {
+	                this.remove();
+	            });
 	            if (this.state.totalDragged < 8) {
 	                ev.target.appendChild(clonedNode);
 	            }
@@ -3460,7 +3544,7 @@
 	}, null, { page12Submit: _page_actions.page12Submit })(Page12);
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3487,7 +3571,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Rcslider = __webpack_require__(27);
+	var Rcslider = __webpack_require__(28);
 
 	var page13 = function (_Component) {
 	    _inherits(page13, _Component);
@@ -3598,13 +3682,13 @@
 	}, null, { page13Submit: _page_actions.page13Submit })(page13);
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	module.exports = require("rc-slider");
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3631,7 +3715,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Rcslider = __webpack_require__(27);
+	var Rcslider = __webpack_require__(28);
 
 	var page14 = function (_Component) {
 	    _inherits(page14, _Component);
@@ -3742,7 +3826,7 @@
 	}, null, { page14Submit: _page_actions.page14Submit })(page14);
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3771,19 +3855,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Page15 = function (_Component) {
-	    _inherits(Page15, _Component);
+	var page15 = function (_Component) {
+	    _inherits(page15, _Component);
 
-	    function Page15() {
-	        _classCallCheck(this, Page15);
+	    function page15() {
+	        _classCallCheck(this, page15);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page15).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(page15).apply(this, arguments));
 	    }
 
-	    _createClass(Page15, [{
+	    _createClass(page15, [{
 	        key: 'onSubmit',
 	        value: function onSubmit(e) {
-	            this.props.Page15Submit(e);
+	            this.props.page15Submit(e);
 	        }
 	    }, {
 	        key: 'render',
@@ -3847,7 +3931,7 @@
 	        }
 	    }]);
 
-	    return Page15;
+	    return page15;
 	}(_react.Component);
 
 	function validate(formProps) {
@@ -3857,13 +3941,13 @@
 	}
 
 	exports.default = (0, _reduxForm.reduxForm)({
-	    form: 'Page15',
+	    form: 'page15',
 	    fields: ['daysPerMonth'],
 	    validate: validate
-	}, null, { Page15Submit: _page_actions.Page15Submit })(Page15);
+	}, null, { page15Submit: _page_actions.page15Submit })(page15);
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3892,16 +3976,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Page16 = function (_Component) {
-	    _inherits(Page16, _Component);
+	var page16 = function (_Component) {
+	    _inherits(page16, _Component);
 
-	    function Page16() {
-	        _classCallCheck(this, Page16);
+	    function page16() {
+	        _classCallCheck(this, page16);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page16).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(page16).apply(this, arguments));
 	    }
 
-	    _createClass(Page16, [{
+	    _createClass(page16, [{
 	        key: 'onSubmit',
 	        value: function onSubmit(e) {
 	            this.props.page16Submit(e);
@@ -4008,7 +4092,7 @@
 	        }
 	    }]);
 
-	    return Page16;
+	    return page16;
 	}(_react.Component);
 
 	function validate(formProps) {
@@ -4018,13 +4102,13 @@
 	}
 
 	exports.default = (0, _reduxForm.reduxForm)({
-	    form: 'Page16',
+	    form: 'page16',
 	    fields: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen'],
 	    validate: validate
-	}, null, { page16Submit: _page_actions.page16Submit })(Page16);
+	}, null, { page16Submit: _page_actions.page16Submit })(page16);
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4053,16 +4137,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Page17 = function (_Component) {
-	    _inherits(Page17, _Component);
+	var page17 = function (_Component) {
+	    _inherits(page17, _Component);
 
-	    function Page17() {
-	        _classCallCheck(this, Page17);
+	    function page17() {
+	        _classCallCheck(this, page17);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page17).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(page17).apply(this, arguments));
 	    }
 
-	    _createClass(Page17, [{
+	    _createClass(page17, [{
 	        key: 'onSubmit',
 	        value: function onSubmit(e) {
 	            this.props.page17Submit(e);
@@ -4154,7 +4238,7 @@
 	        }
 	    }]);
 
-	    return Page17;
+	    return page17;
 	}(_react.Component);
 
 	function validate(formProps) {
@@ -4164,13 +4248,13 @@
 	}
 
 	exports.default = (0, _reduxForm.reduxForm)({
-	    form: 'Page17',
+	    form: 'page17',
 	    fields: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'],
 	    validate: validate
-	}, null, { page17Submit: _page_actions.page17Submit })(Page17);
+	}, null, { page17Submit: _page_actions.page17Submit })(page17);
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4199,16 +4283,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Page18 = function (_Component) {
-	    _inherits(Page18, _Component);
+	var page18 = function (_Component) {
+	    _inherits(page18, _Component);
 
-	    function Page18() {
-	        _classCallCheck(this, Page18);
+	    function page18() {
+	        _classCallCheck(this, page18);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page18).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(page18).apply(this, arguments));
 	    }
 
-	    _createClass(Page18, [{
+	    _createClass(page18, [{
 	        key: 'onSubmit',
 	        value: function onSubmit(e) {
 	            this.props.page18Submit(e);
@@ -4331,7 +4415,7 @@
 	        }
 	    }]);
 
-	    return Page18;
+	    return page18;
 	}(_react.Component);
 
 	function validate(formProps) {
@@ -4341,13 +4425,13 @@
 	}
 
 	exports.default = (0, _reduxForm.reduxForm)({
-	    form: 'Page18',
+	    form: 'page18',
 	    fields: ['designImpactCor', 'designImpactEnv', 'dedicatedSocialSpace', 'workspaceInteraction', 'currentWork3', 'futureWork3'],
 	    validate: validate
-	}, null, { page18Submit: _page_actions.page18Submit })(Page18);
+	}, null, { page18Submit: _page_actions.page18Submit })(page18);
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4376,19 +4460,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Page19 = function (_Component) {
-	    _inherits(Page19, _Component);
+	var page19 = function (_Component) {
+	    _inherits(page19, _Component);
 
-	    function Page19() {
-	        _classCallCheck(this, Page19);
+	    function page19() {
+	        _classCallCheck(this, page19);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page19).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(page19).apply(this, arguments));
 	    }
 
-	    _createClass(Page19, [{
+	    _createClass(page19, [{
 	        key: 'onSubmit',
 	        value: function onSubmit(e) {
-	            this.props.Page19Submit(this.props.pageData);
+	            this.props.page19Submit(this.props.pageData);
 	        }
 	    }, {
 	        key: 'render',
@@ -4444,7 +4528,7 @@
 	        }
 	    }]);
 
-	    return Page19;
+	    return page19;
 	}(_react.Component);
 
 	function mapStateToProps(state) {
@@ -4454,62 +4538,9 @@
 	}
 
 	exports.default = (0, _reduxForm.reduxForm)({
-	    form: 'Page19',
+	    form: 'page19',
 	    fields: ['role', 'specificDetails']
-	}, mapStateToProps, { Page19Submit: _page_actions.Page19Submit })(Page19);
-
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(6);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Page13 = function (_Component) {
-	    _inherits(Page13, _Component);
-
-	    function Page13() {
-	        _classCallCheck(this, Page13);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page13).apply(this, arguments));
-	    }
-
-	    _createClass(Page13, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Page 13'
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Page13;
-	}(_react.Component);
-
-	exports.default = Page13;
+	}, mapStateToProps, { page19Submit: _page_actions.page19Submit })(page19);
 
 /***/ },
 /* 35 */
@@ -4574,9 +4605,62 @@
 	    value: true
 	});
 
-	var _redux = __webpack_require__(37);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _pageReducers = __webpack_require__(38);
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Page13 = function (_Component) {
+	    _inherits(Page13, _Component);
+
+	    function Page13() {
+	        _classCallCheck(this, Page13);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page13).apply(this, arguments));
+	    }
+
+	    _createClass(Page13, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Page 13'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Page13;
+	}(_react.Component);
+
+	exports.default = Page13;
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _redux = __webpack_require__(38);
+
+	var _pageReducers = __webpack_require__(39);
 
 	var _reduxForm = __webpack_require__(9);
 
@@ -4588,13 +4672,13 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	module.exports = require("redux");
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4654,34 +4738,106 @@
 	            return _extends({}, state, { page13: action.payload });
 	        case "PAGE_14":
 	            console.log(action.payload);
-	            return _extends({}, state, { page13: action.payload });
+	            return _extends({}, state, { page14: action.payload });
 	        case "PAGE_15":
 	            console.log(action.payload);
-	            return _extends({}, state, { page13: action.payload });
+	            return _extends({}, state, { page15: action.payload });
 	        case "PAGE_16":
 	            console.log(action.payload);
-	            return _extends({}, state, { page14: action.payload });
+	            return _extends({}, state, { page16: action.payload });
 	        case "PAGE_17":
 	            console.log(action.payload);
-	            return _extends({}, state, { page15: action.payload });
+	            return _extends({}, state, { page17: action.payload });
 	        case "PAGE_18":
 	            console.log(action.payload);
-	            return _extends({}, state, { page16: action.payload });
+	            return _extends({}, state, { page18: action.payload });
 	    }
 	    return state;
 	}
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = require("react-redux");
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = require("path");
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	exports.default = function (ComposedComponent) {
+	  var Authentication = function (_Component) {
+	    _inherits(Authentication, _Component);
+
+	    function Authentication() {
+	      _classCallCheck(this, Authentication);
+
+	      return _possibleConstructorReturn(this, Object.getPrototypeOf(Authentication).apply(this, arguments));
+	    }
+
+	    _createClass(Authentication, [{
+	      key: 'componentWillMount',
+	      value: function componentWillMount() {
+	        if (!this.props.pageReducers.credentials) {
+	          this.context.router.push('/');
+	        }
+	      }
+	    }, {
+	      key: 'componentWillUpdate',
+	      value: function componentWillUpdate(nextProps) {
+	        if (!nextProps.pageReducers.credentials) {
+	          this.context.router.push('/');
+	        }
+	      }
+	    }, {
+	      key: 'render',
+	      value: function render() {
+	        return _react2.default.createElement(ComposedComponent, this.props);
+	      }
+	    }]);
+
+	    return Authentication;
+	  }(_react.Component);
+
+	  Authentication.contextTypes = {
+	    router: _react2.default.PropTypes.object
+	  };
+
+
+	  function mapStateToProps(state) {
+	    return { pageReducers: state.pageReducers };
+	  }
+
+	  return (0, _reactRedux.connect)(mapStateToProps)(Authentication);
+	};
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(40);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /***/ }
 /******/ ]);

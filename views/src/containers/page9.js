@@ -47,10 +47,16 @@ class Page9 extends Component {
         this.props.page9Submit(props);
     }
     drop(ev) {
+        if(ev.target.id != "oneToOne" && ev.target.id != "threeToFive" && ev.target.id != "moreThan5") {
+            return;
+        }
         var data = ev.dataTransfer.getData("text");
         var clonedNode = document.getElementById(data).cloneNode(true);
         $(clonedNode).removeClass('col-md-4');
         $(clonedNode).addClass('col-md-12');
+        $(clonedNode).on('dragend', function (e) {
+            this.remove();
+        })
         if(this.state.totalDragged < 8) {
             ev.target.appendChild(clonedNode);
         }
@@ -78,25 +84,25 @@ class Page9 extends Component {
                 <h5>Of the in person meetings what proportion of your meetings are:
 </h5>
                 <div className="col-md-12">
-                    <div id="0.5h" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-4" style={{ backgroundColor: '#0062c4', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' }}>
+                    <div id="0.5h" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-4" style={{ backgroundColor: '#0062c4', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center', marginRight: '2em' }}>
                         1/2hr
                     </div>
                     <div id="1h" draggable="true" onDragStart={(e) => this.drag(e)}  className="col-md-offset-1 col-md-4" style={{ backgroundColor: '#ff9300', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center'  }}>
                         1hr
                     </div>
                 </div>
-                <div id="oneToOne" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ height: '40vh' }}>
-                    <div className="col-md-10 col-md-offset-1" style={{ height: '30px', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px' }}>
+                <div id="oneToOne" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ minHeight: '40vh', paddingBottom: '5em' }}>
+                    <div className="col-md-10 col-md-offset-1" style={{ height: '2em', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px' }}>
                         <h6 className="text-xs-center">1-1</h6>
                     </div>
                 </div>
-                <div id="threeToFive" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ height: '40vh' }}>
-                    <div className="col-md-10 col-md-offset-1" style={{ height: '30px', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px' }}>
+                <div id="threeToFive" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ minHeight: '40vh', paddingBottom: '5em' }}>
+                    <div className="col-md-10 col-md-offset-1" style={{ height: '2em', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px' }}>
                         <h6 className="text-xs-center">3-5</h6>
                     </div>
                 </div>
-                <div id="moreThan5" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ height: '40vh' }}>
-                    <div className="col-md-10 col-md-offset-1" style={{ height: '30px', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px' }}>
+                <div id="moreThan5" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-4" style={{ minHeight: '40vh', paddingBottom: '5em' }}>
+                    <div className="col-md-10 col-md-offset-1" style={{ height: '2em', paddingTop: '7px' , backgroundColor: 'skyblue', position: 'absolute', bottom: 0,  borderRadius: '5px' }}>
                         <h6 className="text-xs-center">More than 5</h6>
                     </div>
                 </div>

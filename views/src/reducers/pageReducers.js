@@ -43,19 +43,19 @@ export function page_data(state={}, action) {
             return {...state, page13: action.payload};
         case "PAGE_14":
             console.log(action.payload);
-            return {...state, page13: action.payload};
+            return {...state, page14: action.payload};
         case "PAGE_15":
             console.log(action.payload);
-            return {...state, page13: action.payload};
+            return {...state, page15: action.payload};
         case "PAGE_16":
             console.log(action.payload);
-            return {...state, page14: action.payload};
+            return {...state, page16: action.payload};
         case "PAGE_17":
             console.log(action.payload);
-            return {...state, page15: action.payload};
+            return {...state, page17: action.payload};
         case "PAGE_18":
             console.log(action.payload);
-            return {...state, page16: action.payload};
+            return {...state, page18: action.payload};
     }
     return state;
 }

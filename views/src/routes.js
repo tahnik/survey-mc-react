@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
+import require_email from './containers/require_email';
 
 import Header from './components/header';
 import Intro from './containers/intro';
@@ -29,25 +30,25 @@ export default (
     <Router history={ browserHistory } >
         <Route path="/" component={Header}>
             <IndexRoute component={Intro} />
-            <Route path="/page1" component={Page1} />
-            <Route path="/Page2" component={Page2} />
-            <Route path="/Page3" component={Page3} />
-            <Route path="/Page4" component={Page4} />
-            <Route path="/Page5" component={Page5} />
-            <Route path="/Page6" component={Page6} />
-            <Route path="/Page7" component={Page7} />
-            <Route path="/Page8" component={Page8} />
-            <Route path="/Page9" component={Page9} />
-            <Route path="/Page10" component={Page10} />
-            <Route path="/Page11" component={Page11} />
-            <Route path="/Page12" component={Page12} />
-            <Route path="/Page13" component={Page13} />
-            <Route path="/Page14" component={Page14} />
-            <Route path="/Page15" component={Page15} />
-            <Route path="/Page16" component={Page16} />
-            <Route path="/Page17" component={Page17} />
-            <Route path="/Page18" component={Page18} />
-            <Route path="/Page19" component={Page19} />
+            <Route path="/page1" component={require_email(Page1)} />
+            <Route path="/Page2" component={require_email(Page2)} />
+            <Route path="/Page3" component={require_email(Page3)} />
+            <Route path="/Page4" component={require_email(Page4)} />
+            <Route path="/Page5" component={require_email(Page5)} />
+            <Route path="/Page6" component={require_email(Page6)} />
+            <Route path="/Page7" component={require_email(Page7)} />
+            <Route path="/Page8" component={require_email(Page8)} />
+            <Route path="/Page9" component={require_email(Page9)} />
+            <Route path="/Page10" component={require_email(Page10)} />
+            <Route path="/Page11" component={require_email(Page11)} />
+            <Route path="/Page12" component={require_email(Page12)} />
+            <Route path="/Page13" component={require_email(Page13)} />
+            <Route path="/Page14" component={require_email(Page14)} />
+            <Route path="/Page15" component={require_email(Page15)} />
+            <Route path="/Page16" component={require_email(Page16)} />
+            <Route path="/Page17" component={require_email(Page17)} />
+            <Route path="/Page18" component={require_email(Page18)} />
+            <Route path="/Page19" component={require_email(Page19)} />
             <Route path="/Page20" component={Page20} />
             <Route path="/Page21" component={Page21} />
 

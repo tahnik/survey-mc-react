@@ -32,6 +32,9 @@ class Page12 extends Component {
         var data = ev.dataTransfer.getData("text");
         var clonedNode = document.getElementById(data).cloneNode(true);
         $(clonedNode).addClass('cardBottom');
+        $(clonedNode).on('dragend', function (e) {
+            this.remove();
+        })
         if(this.state.totalDragged < 8) {
             ev.target.appendChild(clonedNode);
         }

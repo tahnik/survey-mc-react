@@ -1,5 +1,6 @@
 import { browserHistory } from 'react-router';
 import axios from 'axios';
+import crypto from 'crypto';
 
 export function Signin(props) {
     browserHistory.push('/page1');
@@ -172,14 +173,25 @@ export function page18Submit(props) {
 }
 
 export function page19Submit(props) {
-    const url = "https://survey-6242b.firebaseio.com/users/users.json";
-    console.log(props.credentials.email);
-    var props = {
-        email: props.credentials.email,
-        data: props
-    }
-
-    var request = axios.post(url, props);
+    crypto.randomBytes(5, (err, buf) => {
+        if (err) {
+            console.log(err)
+        }else {
+            var userRandomNumber = buf.toString('hex');
+            const userDataurl = `https://survey-6242b.firebaseio.com/userData.json`;
+            const usersurl = `https://survey-6242b.firebaseio.com/users.json`;
+            var email = props.credentials.email;
+            var users = {
+                [userRandomNumber]: email
+            }
+            var userData = {
+                [userRandomNumber]: props
+            }
+            //console.log(props);
+            var userRequest = axios.patch(usersurl, users);
+            var userDataRequest = axios.patch(userDataurl, userData);
+        }
+    })
 
     return {
         type: "FINISH"
