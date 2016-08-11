@@ -33,18 +33,15 @@ class Page12 extends Component {
             return;
         }
         var data = ev.dataTransfer.getData("text");
+        var node = document.getElementById(data);
         var clonedNode = document.getElementById(data).cloneNode(true);
-        $(clonedNode).addClass('cardBottom');
+        $(clonedNode).removeClass('col-md-offset-1');
+        $(clonedNode).removeClass('col-md-10');
+        $(clonedNode).addClass('col-md-12');
         $(clonedNode).on('dragend', function (e) {
             this.remove();
         })
-        if(this.state.totalDragged < 8) {
-            ev.target.appendChild(clonedNode);
-        }
-        var droppedHole = document.getElementById('droppedHours');
-        this.setState({
-            totalDragged: $(droppedHole).children().length
-        })
+        ev.target.appendChild(clonedNode);
     }
     drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
