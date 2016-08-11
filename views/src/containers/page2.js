@@ -20,6 +20,12 @@ class Page2 extends Component {
                                 <div className="col-md-8 offset-xs-2">
                                     <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                                         <div className="form-check">
+                                            <label className="form-check-label">
+                                                <input {...affliation} className="form-check-input" type="radio" value="GEN_CSS" checked={affliation.value === 'GEN_CSS'} />
+                                                Generalist CSS
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
                                           <label className="form-check-label">
                                             <input {...affliation} className="form-check-input" type="radio" value="Practice" checked={affliation.value === 'Practice'} />
                                             Practice

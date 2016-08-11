@@ -1,3 +1,9 @@
+.form-group label{
+   color: black;
+}
+.radio label{
+     color: black;
+}
 .customTop{
     height: 250px;
     background-color: #003f88;

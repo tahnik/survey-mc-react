@@ -9,7 +9,7 @@ class Page4 extends Component {
         this.props.page4Submit(e);
     }
     render() {
-        const {fields: {tenure}, handleSubmit} = this.props;
+        const {fields: {tenure, daysPerMonth}, handleSubmit} = this.props;
         return(
              <div className="container">
             <div className="row">
@@ -30,6 +30,10 @@ class Page4 extends Component {
                         )
                     })}
                     {tenure.touched && tenure.error && <div className="form-control-feedback">{tenure.error}</div>}
+                    <div className="form-group">
+                        <label>How many days per month are you in the office?</label>
+                        <textarea className="form-control" rows="3" { ...daysPerMonth }></textarea>
+                    </div>
                     <button type="submit" className="btn btn-primary">Next</button>
                 </form>
             </div>
@@ -54,6 +58,6 @@ function validate(formProps) {
 
 export default reduxForm({
 	form: 'Page4',
-	fields: ['tenure'],
+	fields: ['tenure', 'daysPerMonth'],
 	validate
 }, null, { page4Submit })(Page4);

@@ -29,6 +29,9 @@ class Page12 extends Component {
         this.props.page12Submit(props);
     }
     drop(ev) {
+        if(ev.target.id != "most" && ev.target.id != "more" && ev.target.id != "last" && ev.target.id != "least") {
+            return;
+        }
         var data = ev.dataTransfer.getData("text");
         var clonedNode = document.getElementById(data).cloneNode(true);
         $(clonedNode).addClass('cardBottom');
@@ -61,6 +64,7 @@ class Page12 extends Component {
             <div className="col-md-8 offset-xs-2">
                 <h5>Who do you most meet informally? (In order of most at the top)</h5>
                 <div className="col-md-4">
+                    <div className="col-md-offset-1 col-md-10" style={{ backgroundColor: 'white', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' }}></div>
                     <div id="team" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#0062c4', height: '3em', marginBottom: '1em',  paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' }}>
                         My team
                     </div>
@@ -74,6 +78,9 @@ class Page12 extends Component {
                         Others
                     </div>
                 </div>
+                <div className="col-md-8" style={{ height: '3em', float: 'right', marginBottom: '1em' }}>
+                    <h4 style={{ textAlign: 'center', marginTop: 10}}>Most</h4>
+                </div>
                 <div id="most" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-8" style={{ border: "1px solid grey",  height: '3em', float: 'right', marginBottom: '1em' }}>
 
                 </div>
@@ -85,6 +92,9 @@ class Page12 extends Component {
                 </div>
                 <div id="least" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-8" style={{ border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' }}>
 
+                </div>
+                <div className="col-md-8" style={{ height: '3em', float: 'right', marginBottom: '1em' }}>
+                    <h4 style={{ textAlign: 'center', marginTop: 10 }}>Least</h4>
                 </div>
                 <div className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>

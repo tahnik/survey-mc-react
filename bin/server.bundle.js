@@ -78,19 +78,19 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _index = __webpack_require__(37);
+	var _index = __webpack_require__(39);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _redux = __webpack_require__(38);
+	var _redux = __webpack_require__(40);
 
-	var _reactRedux = __webpack_require__(40);
+	var _reactRedux = __webpack_require__(8);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var express = __webpack_require__(1);
 	var router = express.Router();
-	var path = __webpack_require__(41);
+	var path = __webpack_require__(42);
 
 	var React = __webpack_require__(6);
 
@@ -156,99 +156,99 @@
 
 	var _reactRouter = __webpack_require__(4);
 
-	var _require_email = __webpack_require__(42);
+	var _require_email = __webpack_require__(7);
 
 	var _require_email2 = _interopRequireDefault(_require_email);
 
-	var _header = __webpack_require__(7);
+	var _header = __webpack_require__(9);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _intro = __webpack_require__(8);
+	var _intro = __webpack_require__(10);
 
 	var _intro2 = _interopRequireDefault(_intro);
 
-	var _page = __webpack_require__(13);
+	var _page = __webpack_require__(15);
 
 	var _page2 = _interopRequireDefault(_page);
 
-	var _page3 = __webpack_require__(14);
+	var _page3 = __webpack_require__(16);
 
 	var _page4 = _interopRequireDefault(_page3);
 
-	var _page5 = __webpack_require__(16);
+	var _page5 = __webpack_require__(18);
 
 	var _page6 = _interopRequireDefault(_page5);
 
-	var _page7 = __webpack_require__(17);
+	var _page7 = __webpack_require__(19);
 
 	var _page8 = _interopRequireDefault(_page7);
 
-	var _page9 = __webpack_require__(18);
+	var _page9 = __webpack_require__(20);
 
 	var _page10 = _interopRequireDefault(_page9);
 
-	var _page11 = __webpack_require__(19);
+	var _page11 = __webpack_require__(21);
 
 	var _page12 = _interopRequireDefault(_page11);
 
-	var _page13 = __webpack_require__(20);
+	var _page13 = __webpack_require__(22);
 
 	var _page14 = _interopRequireDefault(_page13);
 
-	var _page15 = __webpack_require__(22);
+	var _page15 = __webpack_require__(24);
 
 	var _page16 = _interopRequireDefault(_page15);
 
-	var _page17 = __webpack_require__(23);
+	var _page17 = __webpack_require__(25);
 
 	var _page18 = _interopRequireDefault(_page17);
 
-	var _page19 = __webpack_require__(24);
+	var _page19 = __webpack_require__(26);
 
 	var _page20 = _interopRequireDefault(_page19);
 
-	var _page21 = __webpack_require__(25);
+	var _page21 = __webpack_require__(27);
 
 	var _page22 = _interopRequireDefault(_page21);
 
-	var _page23 = __webpack_require__(26);
+	var _page23 = __webpack_require__(28);
 
 	var _page24 = _interopRequireDefault(_page23);
 
-	var _page25 = __webpack_require__(27);
+	var _page25 = __webpack_require__(29);
 
 	var _page26 = _interopRequireDefault(_page25);
 
-	var _page27 = __webpack_require__(29);
+	var _page27 = __webpack_require__(31);
 
 	var _page28 = _interopRequireDefault(_page27);
 
-	var _page29 = __webpack_require__(30);
+	var _page29 = __webpack_require__(32);
 
 	var _page30 = _interopRequireDefault(_page29);
 
-	var _page31 = __webpack_require__(31);
+	var _page31 = __webpack_require__(33);
 
 	var _page32 = _interopRequireDefault(_page31);
 
-	var _page33 = __webpack_require__(32);
+	var _page33 = __webpack_require__(34);
 
 	var _page34 = _interopRequireDefault(_page33);
 
-	var _page35 = __webpack_require__(33);
+	var _page35 = __webpack_require__(35);
 
 	var _page36 = _interopRequireDefault(_page35);
 
-	var _page37 = __webpack_require__(34);
+	var _page37 = __webpack_require__(36);
 
 	var _page38 = _interopRequireDefault(_page37);
 
-	var _page39 = __webpack_require__(35);
+	var _page39 = __webpack_require__(37);
 
 	var _page40 = _interopRequireDefault(_page39);
 
-	var _page41 = __webpack_require__(36);
+	var _page41 = __webpack_require__(38);
 
 	var _page42 = _interopRequireDefault(_page41);
 
@@ -293,6 +293,84 @@
 
 /***/ },
 /* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	exports.default = function (ComposedComponent) {
+	  var Authentication = function (_Component) {
+	    _inherits(Authentication, _Component);
+
+	    function Authentication() {
+	      _classCallCheck(this, Authentication);
+
+	      return _possibleConstructorReturn(this, Object.getPrototypeOf(Authentication).apply(this, arguments));
+	    }
+
+	    _createClass(Authentication, [{
+	      key: 'componentWillMount',
+	      value: function componentWillMount() {
+	        if (!this.props.pageReducers.credentials) {
+	          this.context.router.push('/');
+	        }
+	      }
+	    }, {
+	      key: 'componentWillUpdate',
+	      value: function componentWillUpdate(nextProps) {
+	        if (!nextProps.pageReducers.credentials) {
+	          this.context.router.push('/');
+	        }
+	      }
+	    }, {
+	      key: 'render',
+	      value: function render() {
+	        return _react2.default.createElement(ComposedComponent, this.props);
+	      }
+	    }]);
+
+	    return Authentication;
+	  }(_react.Component);
+
+	  Authentication.contextTypes = {
+	    router: _react2.default.PropTypes.object
+	  };
+
+
+	  function mapStateToProps(state) {
+	    return { pageReducers: state.pageReducers };
+	  }
+
+	  return (0, _reactRedux.connect)(mapStateToProps)(Authentication);
+	};
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(8);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-redux");
+
+/***/ },
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -531,7 +609,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 8 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -548,11 +626,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
-	var _axios = __webpack_require__(11);
+	var _axios = __webpack_require__(13);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -730,13 +808,13 @@
 	}, null, { Signin: _page_actions.Signin })(Intro);
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = require("redux-form");
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -767,11 +845,11 @@
 
 	var _reactRouter = __webpack_require__(4);
 
-	var _axios = __webpack_require__(11);
+	var _axios = __webpack_require__(13);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _crypto = __webpack_require__(12);
+	var _crypto = __webpack_require__(14);
 
 	var _crypto2 = _interopRequireDefault(_crypto);
 
@@ -971,19 +1049,19 @@
 	}
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = require("axios");
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = require("crypto");
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1000,9 +1078,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1133,7 +1211,7 @@
 	}, null, { page1Submit: _page_actions.page1Submit })(Page1);
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1150,11 +1228,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
-	var _jquery = __webpack_require__(15);
+	var _jquery = __webpack_require__(17);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -1220,6 +1298,16 @@
 	                    { className: 'form', onSubmit: handleSubmit(function (e) {
 	                        return _this2.onSubmit(e);
 	                      }) },
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'form-check' },
+	                      _react2.default.createElement(
+	                        'label',
+	                        { className: 'form-check-label' },
+	                        _react2.default.createElement('input', _extends({}, affliation, { className: 'form-check-input', type: 'radio', value: 'GEN_CSS', checked: affliation.value === 'GEN_CSS' })),
+	                        'Generalist CSS'
+	                      )
+	                    ),
 	                    _react2.default.createElement(
 	                      'div',
 	                      { className: 'form-check' },
@@ -1379,13 +1467,13 @@
 	}, null, { page2Submit: _page_actions.page2Submit })(Page2);
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = require("jquery");
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1402,9 +1490,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	var _reactRouter = __webpack_require__(4);
 
@@ -1565,7 +1653,7 @@
 	}, mapStateToProps, { page3Submit: _page_actions.page3Submit })(Page3);
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1582,9 +1670,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1616,7 +1704,9 @@
 	            var _this2 = this;
 
 	            var _props = this.props;
-	            var tenure = _props.fields.tenure;
+	            var _props$fields = _props.fields;
+	            var tenure = _props$fields.tenure;
+	            var daysPerMonth = _props$fields.daysPerMonth;
 	            var handleSubmit = _props.handleSubmit;
 
 	            return _react2.default.createElement(
@@ -1665,6 +1755,16 @@
 	                                            tenure.error
 	                                        ),
 	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'form-group' },
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                null,
+	                                                'How many days per month are you in the office?'
+	                                            ),
+	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, daysPerMonth))
+	                                        ),
+	                                        _react2.default.createElement(
 	                                            'button',
 	                                            { type: 'submit', className: 'btn btn-primary' },
 	                                            'Next'
@@ -1694,12 +1794,12 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: 'Page4',
-	    fields: ['tenure'],
+	    fields: ['tenure', 'daysPerMonth'],
 	    validate: validate
 	}, null, { page4Submit: _page_actions.page4Submit })(Page4);
 
 /***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1716,9 +1816,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1833,7 +1933,7 @@
 	}, null, { page5Submit: _page_actions.page5Submit })(Page5);
 
 /***/ },
-/* 19 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1850,9 +1950,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1884,11 +1984,11 @@
 
 	            var S = [{ name: 'Fully Satisfied', value: 'FUSA' }, { name: 'Satisfied', value: 'SA' }, { name: 'Neither satisfied nor dissatisfied', value: 'NSND' }, { name: 'Dissatisfied', value: 'DI' }, { name: 'Fully Dissatisfied', value: 'FD' }];
 
-	            var E = [{ name: 'Very poor', value: 'VP' }, { name: 'Poor', value: 'PO' }, { name: 'Neither good nor bad', value: 'NGNB' }, { name: 'Good', value: 'GO' }, { name: 'Excellent', value: 'EX' }];
+	            var E = [{ name: 'Excellent', value: 'EX' }, { name: 'Good', value: 'GO' }, { name: 'Neither good nor bad', value: 'NGNB' }, { name: 'Poor', value: 'PO' }, { name: 'Very poor', value: 'VP' }];
 
 	            var A = [{ name: 'Strongly Agree', value: 'STA' }, { name: 'Agree', value: 'AG' }, { name: 'Neither Agree nor Disagree', value: 'NAND' }, { name: 'Disagree', value: 'DA' }, { name: 'Strongly Disagree', value: 'SDA' }];
 
-	            var SATISFACTION = [{ Q: 'How satisfied are you with London office?', fieldValue: this.props.fields.satisfiedLondon, selectionType: 'S' }, { Q: 'What gets the best out of you in London office?', fieldValue: this.props.fields.bestOutOfLondonOffice, selectionType: 'FT' }, { Q: 'What would you change about the office?', fieldValue: this.props.fields.changeAboutOffice, selectionType: 'FT' }, { Q: 'The variety of workspaces available?', fieldValue: this.props.fields.workspaceVariety, selectionType: 'E' }, { Q: 'The lighting?', fieldValue: this.props.fields.lighting, selectionType: 'E' }, { Q: 'The air quality?', fieldValue: this.props.fields.airQuality, selectionType: 'E' }, { Q: 'The noise levels?', fieldValue: this.props.fields.noiseLevel, selectionType: 'E' }, { Q: 'The furniture/ergonomics/comfort?', fieldValue: this.props.fields.furniture, selectionType: 'E' }, { Q: 'The informal breakout and social spaces?', fieldValue: this.props.fields.informalBreakout, selectionType: 'E' }, { Q: 'The availability and choice of workspace?', fieldValue: this.props.fields.choiceOfWorkspace, selectionType: 'E' }, { Q: 'The showers/changing /cycling facilities?', fieldValue: this.props.fields.showers, selectionType: 'E' }, { Q: 'The design of the current office  space creates an enjoyable environment to work in', fieldValue: this.props.fields.designOfCurrentOffice, selectionType: 'A' }, { Q: 'The design of the office enables me to work productively and supports my daily tasks', fieldValue: this.props.fields.designOfCurrentOfficeProductivity, selectionType: 'A' }, { Q: 'The design of the office promotes movement', fieldValue: this.props.fields.promotesMovement, selectionType: 'A' }, { Q: 'I am proud to bring visitors to the office', fieldValue: this.props.fields.proudVisitors, selectionType: 'A' }, { Q: 'I am able to access spaces with good natural light.', fieldValue: this.props.fields.naturalLight, selectionType: 'A' }, { Q: 'My current office space supports my physical wellbeing', fieldValue: this.props.fields.physicalWellbeing, selectionType: 'A' }];
+	            var SATISFACTION = [{ Q: 'How satisfied are you with London office?', fieldValue: this.props.fields.satisfiedLondon, selectionType: 'S' }, { Q: 'What gets the best out of you in London office?', fieldValue: this.props.fields.bestOutOfLondonOffice, selectionType: 'FT' }, { Q: 'What would you change about the office?', fieldValue: this.props.fields.changeAboutOffice, selectionType: 'FT' }, { Q: 'The variety of workspaces available?', fieldValue: this.props.fields.workspaceVariety, selectionType: 'E' }, { Q: 'The lighting?', fieldValue: this.props.fields.lighting, selectionType: 'E' }, { Q: 'The air quality?', fieldValue: this.props.fields.airQuality, selectionType: 'E' }, { Q: 'The noise levels?', fieldValue: this.props.fields.noiseLevel, selectionType: 'E' }, { Q: 'The furniture/ergonomics/comfort?', fieldValue: this.props.fields.furniture, selectionType: 'E' }, { Q: 'The informal breakout and social spaces?', fieldValue: this.props.fields.informalBreakout, selectionType: 'E' }, { Q: 'The availability of workspace?', fieldValue: this.props.fields.choiceOfWorkspace, selectionType: 'E' }, { Q: 'The showers/changing /cycling facilities?', fieldValue: this.props.fields.showers, selectionType: 'E' }, { Q: 'The design of the current office  space creates an enjoyable environment to work in', fieldValue: this.props.fields.designOfCurrentOffice, selectionType: 'A' }];
 	            console.log(this.props.fields.satisfiedLondon);
 	            var _props = this.props;
 	            var _props$fields = _props.fields;
@@ -1901,14 +2001,9 @@
 	            var noiseLevel = _props$fields.noiseLevel;
 	            var furniture = _props$fields.furniture;
 	            var informalBreakout = _props$fields.informalBreakout;
-	            var choiceOfWorkspace = _props$fields.choiceOfWorkspace;
+	            var availableWorkspace = _props$fields.availableWorkspace;
 	            var showers = _props$fields.showers;
 	            var designOfCurrentOffice = _props$fields.designOfCurrentOffice;
-	            var designOfCurrentOfficeProductivity = _props$fields.designOfCurrentOfficeProductivity;
-	            var promotesMovement = _props$fields.promotesMovement;
-	            var proudVisitors = _props$fields.proudVisitors;
-	            var naturalLight = _props$fields.naturalLight;
-	            var physicalWellbeing = _props$fields.physicalWellbeing;
 	            var handleSubmit = _props.handleSubmit;
 
 	            return _react2.default.createElement(
@@ -2033,12 +2128,12 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: 'Page6',
-	    fields: ['satisfiedLondon', 'bestOutOfLondonOffice', 'changeAboutOffice', 'workspaceVariety', 'lighting', 'airQuality', 'noiseLevel', 'furniture', 'informalBreakout', 'choiceOfWorkspace', 'showers', 'designOfCurrentOffice', 'designOfCurrentOfficeProductivity', 'promotesMovement', 'proudVisitors', 'naturalLight', 'physicalWellbeing'],
+	    fields: ['satisfiedLondon', 'bestOutOfLondonOffice', 'changeAboutOffice', 'workspaceVariety', 'lighting', 'airQuality', 'noiseLevel', 'furniture', 'informalBreakout', 'availableWorkspace', 'showers', 'designOfCurrentOffice'],
 	    validate: validate
 	}, null, { page6Submit: _page_actions.page6Submit })(Page6);
 
 /***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2053,15 +2148,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(21);
+	var _reactDom = __webpack_require__(23);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
-	var _jquery = __webpack_require__(15);
+	var _jquery = __webpack_require__(17);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -2182,11 +2277,11 @@
 	                                ),
 	                                _react2.default.createElement(
 	                                    'div',
-	                                    { className: 'col-md-10 offset-xs-1' },
+	                                    { className: 'col-md-12' },
 	                                    _react2.default.createElement(
 	                                        'h5',
 	                                        null,
-	                                        'Proportion of time spent on: (Starting from the beginning of the day at the top)'
+	                                        'Proportion of time spent on: (Starting from the beginning of the day at the bottom)'
 	                                    ),
 	                                    _react2.default.createElement(
 	                                        'div',
@@ -2218,6 +2313,15 @@
 	                                                    return _this2.drag(e);
 	                                                }, className: 'col-md-offset-1 col-md-10', style: { backgroundColor: '#c40000', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } },
 	                                            '1hr Clients'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-2' },
+	                                        _react2.default.createElement(
+	                                            'h5',
+	                                            { style: { textAlign: 'right' } },
+	                                            'End of the day'
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement('div', { id: 'droppedHours', onDrop: function onDrop(e) {
@@ -2265,13 +2369,13 @@
 	}, null, { page7Submit: _page_actions.page7Submit })(Page7);
 
 /***/ },
-/* 21 */
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports = require("react-dom");
 
 /***/ },
-/* 22 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2286,15 +2390,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(21);
+	var _reactDom = __webpack_require__(23);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
-	var _jquery = __webpack_require__(15);
+	var _jquery = __webpack_require__(17);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -2529,7 +2633,7 @@
 	}, null, { page8Submit: _page_actions.page8Submit })(Page8);
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2544,15 +2648,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(21);
+	var _reactDom = __webpack_require__(23);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
-	var _jquery = __webpack_require__(15);
+	var _jquery = __webpack_require__(17);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -2792,7 +2896,7 @@
 	}, null, { page9Submit: _page_actions.page9Submit })(Page9);
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2807,15 +2911,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(21);
+	var _reactDom = __webpack_require__(23);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
-	var _jquery = __webpack_require__(15);
+	var _jquery = __webpack_require__(17);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -3055,7 +3159,7 @@
 	}, null, { page10Submit: _page_actions.page10Submit })(Page10);
 
 /***/ },
-/* 25 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3070,15 +3174,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(21);
+	var _reactDom = __webpack_require__(23);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
-	var _jquery = __webpack_require__(15);
+	var _jquery = __webpack_require__(17);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -3318,7 +3422,7 @@
 	}, null, { page11Submit: _page_actions.page11Submit })(Page11);
 
 /***/ },
-/* 26 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3333,15 +3437,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(21);
+	var _reactDom = __webpack_require__(23);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
-	var _jquery = __webpack_require__(15);
+	var _jquery = __webpack_require__(17);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -3391,6 +3495,9 @@
 	    }, {
 	        key: 'drop',
 	        value: function drop(ev) {
+	            if (ev.target.id != "most" && ev.target.id != "more" && ev.target.id != "last" && ev.target.id != "least") {
+	                return;
+	            }
 	            var data = ev.dataTransfer.getData("text");
 	            var clonedNode = document.getElementById(data).cloneNode(true);
 	            (0, _jquery2.default)(clonedNode).addClass('cardBottom');
@@ -3455,6 +3562,7 @@
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        { className: 'col-md-4' },
+	                                        _react2.default.createElement('div', { className: 'col-md-offset-1 col-md-10', style: { backgroundColor: 'white', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' } }),
 	                                        _react2.default.createElement(
 	                                            'div',
 	                                            { id: 'team', draggable: 'true', onDragStart: function onDragStart(e) {
@@ -3484,6 +3592,15 @@
 	                                            'Others'
 	                                        )
 	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-8', style: { height: '3em', float: 'right', marginBottom: '1em' } },
+	                                        _react2.default.createElement(
+	                                            'h4',
+	                                            { style: { textAlign: 'center', marginTop: 10 } },
+	                                            'Most'
+	                                        )
+	                                    ),
 	                                    _react2.default.createElement('div', { id: 'most', onDrop: function onDrop(e) {
 	                                            return _this2.drop(e);
 	                                        }, onDragOver: function onDragOver(e) {
@@ -3504,6 +3621,15 @@
 	                                        }, onDragOver: function onDragOver(e) {
 	                                            return _this2.allowDrop(e);
 	                                        }, className: 'col-md-8', style: { border: "1px solid grey", height: '3em', float: 'right', marginBottom: '1em' } }),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'col-md-8', style: { height: '3em', float: 'right', marginBottom: '1em' } },
+	                                        _react2.default.createElement(
+	                                            'h4',
+	                                            { style: { textAlign: 'center', marginTop: 10 } },
+	                                            'Least'
+	                                        )
+	                                    ),
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        { className: 'col-md-12' },
@@ -3544,7 +3670,7 @@
 	}, null, { page12Submit: _page_actions.page12Submit })(Page12);
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3559,9 +3685,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3571,7 +3697,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Rcslider = __webpack_require__(28);
+	var Rcslider = __webpack_require__(30);
 
 	var page13 = function (_Component) {
 	    _inherits(page13, _Component);
@@ -3682,13 +3808,13 @@
 	}, null, { page13Submit: _page_actions.page13Submit })(page13);
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports) {
 
 	module.exports = require("rc-slider");
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3703,9 +3829,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3715,7 +3841,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Rcslider = __webpack_require__(28);
+	var Rcslider = __webpack_require__(30);
 
 	var page14 = function (_Component) {
 	    _inherits(page14, _Component);
@@ -3826,7 +3952,7 @@
 	}, null, { page14Submit: _page_actions.page14Submit })(page14);
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3843,9 +3969,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3947,7 +4073,7 @@
 	}, null, { page15Submit: _page_actions.page15Submit })(page15);
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3964,9 +4090,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4015,7 +4141,7 @@
 	            var sixteen = _props$fields.sixteen;
 	            var handleSubmit = _props.handleSubmit;
 
-	            var questions = [{ id: this.props.fields.one, one: 'An allocated desk in an open plan setting', two: 'An unassigned desk, with access to quiet space' }, { id: this.props.fields.two, one: 'A shared desk in a shared office', two: 'An unassigned desk, with access to quiet space' }, { id: this.props.fields.three, one: 'An shared desk in an open plan setting', two: 'An unassigned desk, with access to quiet space' }, { id: this.props.fields.four, one: 'An allocated desk with access to multifunctional meeting space (e.g., village green)', two: 'An unassigned desk, with access to single purpose meeting space (closed rooms, white boards, access to VC)' }, { id: this.props.fields.five, one: 'An allocated desk in an open plan setting', two: 'An unassigned desk with access to private space for phone calls and VC' }, { id: this.props.fields.six, one: 'An allocated desk in an open plan setting but no defined social space', two: 'An unassigned desk with access to social space' }, { id: this.props.fields.seven, one: 'An allocated desk, among people you do not usually work with or interact with', two: 'An unassigned desk close to your team or peers' }, { id: this.props.fields.eight, one: 'Space in a shared office, with access to multifunctional meeting space (e.g., village green)', two: 'Space in an open plan setting with access to single purpose meeting space (closed rooms, white boards, access to VC)' }, { id: this.props.fields.nine, one: 'Space in a shared closed office, without access to alternative closed spaces', two: 'Space in an open plan environment with access to private space for phone calls and VC' }, { id: this.props.fields.ten, one: 'Space in a shared closed office but no defined social space', two: 'Space in an open plan environment with access to social space' }, { id: this.props.fields.eleven, one: 'Space in a shared closed office among people you do not usually work with or interact with', two: 'Space in an open plan environment close to your team or peers' }, { id: this.props.fields.twelve, one: 'Access to single purpose meeting space but no alternative closed spaces', two: 'Access to multifunctional meetings space (e.g., village green) and private space for making phone calls' }, { id: this.props.fields.thirteen, one: 'Access to single purpose meeting space but no defined social space', two: 'Access to multifunctional meetings space (e.g., village green) which can be used as both a meeting and social space' }, { id: this.props.fields.fourteen, one: 'Access to single purpose meeting space but no facility to sit close to your peers or team', two: 'Access to multifunctional meetings space (e.g., village green) and the ability to sit close to your peers or team' }, { id: this.props.fields.fifteen, one: 'Access to private space for phone calls and VC but no defined social space', two: 'Access to defined social space but no closed space for private phone calls or VC' }, { id: this.props.fields.sixteen, one: 'Access to defined social space but no facility to sit close to your peers or team', two: 'The ability to sit close to your team but no access to defined social space' }];
+	            var questions = [{ id: this.props.fields.one, one: 'An allocated desk in an open plan setting', two: 'An unassigned desk, with access to quiet space for focused work' }, { id: this.props.fields.two, one: 'A shared desk in a shared office', two: 'An unassigned desk, with access to quiet space for focused work' }, { id: this.props.fields.three, one: 'An shared desk in an open plan setting', two: 'An unassigned desk, with access to quiet space for focused work' }, { id: this.props.fields.four, one: 'An allocated desk with access to multifunctional meeting space (e.g., village green)', two: 'An unassigned desk, with access to single purpose meeting space (closed rooms, white boards, access to VC)' }, { id: this.props.fields.five, one: 'An allocated desk in an open plan setting', two: 'An unassigned desk with access to private space for phone calls and VC' }, { id: this.props.fields.six, one: 'An allocated desk in an open plan setting but no defined social space', two: 'An unassigned desk with access to social space' }, { id: this.props.fields.seven, one: 'An allocated desk, among people you do not usually work with or interact with', two: 'An unassigned desk close to your team or peers' }, { id: this.props.fields.eight, one: 'Space in a shared closed office, with access to multifunctional meeting space (e.g., village green)', two: 'Space in an open plan setting with access to single purpose meeting space (closed rooms, white boards, access to VC)' }, { id: this.props.fields.nine, one: 'Space in a shared closed office, without access to alternative closed spaces for phone calls/ private conversations', two: 'Space in an open plan environment with access to private space for phone calls and VC' }, { id: this.props.fields.ten, one: 'Space in a shared closed office but no defined social space', two: 'Space in an open plan environment with access to social space' }, { id: this.props.fields.eleven, one: 'Space in a shared closed office among people you do not usually work with or interact with', two: 'Space in an open plan environment close to your team or peers' }, { id: this.props.fields.twelve, one: 'Access to single purpose meeting space but no alternative closed spaces for phone calls/ private conversations', two: 'Access to multifunctional meetings space (e.g., village green) and closed space for making phone calls/ private conversations' }, { id: this.props.fields.thirteen, one: 'Access to single purpose meeting space but no defined social space', two: 'Access to multifunctional meetings space (e.g., village green) which can be used as both a meeting and social space' }, { id: this.props.fields.fourteen, one: 'Access to single purpose meeting space but no facility to sit close to your peers or team', two: 'Access to multifunctional meetings space (e.g., village green) and the ability to sit close to your peers or team' }, { id: this.props.fields.fifteen, one: 'Access to closed space for phone calls/private conversations and VC but no defined social space', two: 'Access to defined social space but no closed space for phone calls/private conversations or VC' }, { id: this.props.fields.sixteen, one: 'Access to defined social space but no facility to sit close to your peers or team', two: 'The ability to sit close to your team but no access to defined social space' }];
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'container' },
@@ -4039,6 +4165,11 @@
 	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h4',
+	                                        { style: { marginBottom: '20px' } },
+	                                        'In designing the new office, we need to make a number of trade-offs. This section helps us understand what is most important to you.'
+	                                    ),
 	                                    _react2.default.createElement(
 	                                        'form',
 	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
@@ -4108,7 +4239,7 @@
 	}, null, { page16Submit: _page_actions.page16Submit })(page16);
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4125,9 +4256,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4158,7 +4289,7 @@
 
 	            var A = [{ name: 'Strongly Agree', value: 'STA' }, { name: 'Agree', value: 'AG' }, { name: 'Neither Agree nor Disagree', value: 'NAND' }, { name: 'Disagree', value: 'DA' }, { name: 'Strongly Disagree', value: 'SDA' }];
 
-	            var SATISFACTION = [{ Q: 'I can focus when I’m in the office', fieldValue: this.props.fields.one, selectionType: 'S' }, { Q: 'I can collaborate with colleagues when I’m in the office', fieldValue: this.props.fields.two, selectionType: 'FT' }, { Q: 'I can be creative in the office', fieldValue: this.props.fields.three, selectionType: 'FT' }, { Q: 'I feel physically comfortable in the office', fieldValue: this.props.fields.four, selectionType: 'E' }, { Q: 'I feel connected to the office', fieldValue: this.props.fields.five, selectionType: 'E' }, { Q: 'The office supports me to develop client relationships', fieldValue: this.props.fields.six, selectionType: 'E' }, { Q: 'The design of the current office space creates an enjoyable environment to work in', fieldValue: this.props.fields.seven, selectionType: 'E' }, { Q: 'The design of the office enables me to work productively and supports my daily tasks', fieldValue: this.props.fields.eight, selectionType: 'E' }, { Q: 'The design of the office supports mobility', fieldValue: this.props.fields.nine, selectionType: 'E' }, { Q: 'I am proud to bring visitors to the office', fieldValue: this.props.fields.ten, selectionType: 'E' }, { Q: 'I am able to access spaces with good natural light.', fieldValue: this.props.fields.eleven, selectionType: 'E' }, { Q: 'My current office space supports my physical wellbeing', fieldValue: this.props.fields.twelve, selectionType: 'A' }];
+	            var SATISFACTION = [{ Q: 'The design of the current office space creates an enjoyable environment to work in', fieldValue: this.props.fields.one, selectionType: 'E' }, { Q: 'The design of the office enables me to work productively and supports my daily tasks', fieldValue: this.props.fields.two, selectionType: 'E' }, { Q: 'I can focus when Iâ€™m in the office', fieldValue: this.props.fields.three, selectionType: 'S' }, { Q: 'I can collaborate with colleagues when Iâ€™m in the office', fieldValue: this.props.fields.four, selectionType: 'FT' }, { Q: 'I can be creative in the office', fieldValue: this.props.fields.five, selectionType: 'FT' }, { Q: 'I feel physically comfortable in the office', fieldValue: this.props.fields.six, selectionType: 'E' }, { Q: 'The design of the office supports mobility', fieldValue: this.props.fields.seven, selectionType: 'E' }, { Q: 'My current office space supports my physical wellbeing', fieldValue: this.props.fields.eight, selectionType: 'A' }, { Q: 'I feel connected to the office', fieldValue: this.props.fields.nine, selectionType: 'E' }, { Q: 'The office supports me to develop client relationships', fieldValue: this.props.fields.ten, selectionType: 'E' }, { Q: 'I am proud to bring visitors to the office', fieldValue: this.props.fields.eleven, selectionType: 'E' }, { Q: 'The office is reflective of the firmâ€™s culture', fieldValue: this.props.fields.twelve, selectionType: 'E' }];
 	            console.log(this.props.fields.satisfiedLondon);
 	            var _props = this.props;
 	            var _props$fields = _props.fields;
@@ -4199,6 +4330,11 @@
 	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'col-md-8 offset-xs-2' },
+	                                    _react2.default.createElement(
+	                                        'h4',
+	                                        { style: { marginBottom: '20px' } },
+	                                        'Please state the extent to which you agree or disagree with the following statements.'
+	                                    ),
 	                                    _react2.default.createElement(
 	                                        'form',
 	                                        { className: 'form', onSubmit: handleSubmit(function (e) {
@@ -4254,7 +4390,7 @@
 	}, null, { page17Submit: _page_actions.page17Submit })(page17);
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4271,9 +4407,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4306,7 +4442,6 @@
 	            var _props$fields = _props.fields;
 	            var designImpactCor = _props$fields.designImpactCor;
 	            var designImpactEnv = _props$fields.designImpactEnv;
-	            var dedicatedSocialSpace = _props$fields.dedicatedSocialSpace;
 	            var workspaceInteraction = _props$fields.workspaceInteraction;
 	            var currentWork3 = _props$fields.currentWork3;
 	            var futureWork3 = _props$fields.futureWork3;
@@ -4366,16 +4501,6 @@
 	                                            _react2.default.createElement(
 	                                                'label',
 	                                                null,
-	                                                'Would you benefit from a dedicated social space?'
-	                                            ),
-	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, dedicatedSocialSpace))
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            'div',
-	                                            { className: 'form-group' },
-	                                            _react2.default.createElement(
-	                                                'label',
-	                                                null,
 	                                                'What could improve workspace interaction?'
 	                                            ),
 	                                            _react2.default.createElement('textarea', _extends({ className: 'form-control', rows: '3' }, workspaceInteraction))
@@ -4426,12 +4551,12 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: 'page18',
-	    fields: ['designImpactCor', 'designImpactEnv', 'dedicatedSocialSpace', 'workspaceInteraction', 'currentWork3', 'futureWork3'],
+	    fields: ['designImpactCor', 'designImpactEnv', 'workspaceInteraction', 'currentWork3', 'futureWork3'],
 	    validate: validate
 	}, null, { page18Submit: _page_actions.page18Submit })(page18);
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4446,9 +4571,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reduxForm = __webpack_require__(9);
+	var _reduxForm = __webpack_require__(11);
 
-	var _page_actions = __webpack_require__(10);
+	var _page_actions = __webpack_require__(12);
 
 	var _reactRouter = __webpack_require__(4);
 
@@ -4543,112 +4668,6 @@
 	}, mapStateToProps, { page19Submit: _page_actions.page19Submit })(page19);
 
 /***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(6);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Page13 = function (_Component) {
-	    _inherits(Page13, _Component);
-
-	    function Page13() {
-	        _classCallCheck(this, Page13);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page13).apply(this, arguments));
-	    }
-
-	    _createClass(Page13, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Page 13'
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Page13;
-	}(_react.Component);
-
-	exports.default = Page13;
-
-/***/ },
-/* 36 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(6);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Page13 = function (_Component) {
-	    _inherits(Page13, _Component);
-
-	    function Page13() {
-	        _classCallCheck(this, Page13);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page13).apply(this, arguments));
-	    }
-
-	    _createClass(Page13, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Page 13'
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Page13;
-	}(_react.Component);
-
-	exports.default = Page13;
-
-/***/ },
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -4658,11 +4677,117 @@
 	    value: true
 	});
 
-	var _redux = __webpack_require__(38);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _pageReducers = __webpack_require__(39);
+	var _react = __webpack_require__(6);
 
-	var _reduxForm = __webpack_require__(9);
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Page13 = function (_Component) {
+	    _inherits(Page13, _Component);
+
+	    function Page13() {
+	        _classCallCheck(this, Page13);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page13).apply(this, arguments));
+	    }
+
+	    _createClass(Page13, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Page 13'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Page13;
+	}(_react.Component);
+
+	exports.default = Page13;
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Page13 = function (_Component) {
+	    _inherits(Page13, _Component);
+
+	    function Page13() {
+	        _classCallCheck(this, Page13);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page13).apply(this, arguments));
+	    }
+
+	    _createClass(Page13, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Page 13'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Page13;
+	}(_react.Component);
+
+	exports.default = Page13;
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _redux = __webpack_require__(40);
+
+	var _pageReducers = __webpack_require__(41);
+
+	var _reduxForm = __webpack_require__(11);
 
 	var rootReducer = (0, _redux.combineReducers)({
 	    pageReducers: _pageReducers.page_data,
@@ -4672,13 +4797,13 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = require("redux");
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4756,88 +4881,10 @@
 	}
 
 /***/ },
-/* 40 */
-/***/ function(module, exports) {
-
-	module.exports = require("react-redux");
-
-/***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 	module.exports = require("path");
-
-/***/ },
-/* 42 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	exports.default = function (ComposedComponent) {
-	  var Authentication = function (_Component) {
-	    _inherits(Authentication, _Component);
-
-	    function Authentication() {
-	      _classCallCheck(this, Authentication);
-
-	      return _possibleConstructorReturn(this, Object.getPrototypeOf(Authentication).apply(this, arguments));
-	    }
-
-	    _createClass(Authentication, [{
-	      key: 'componentWillMount',
-	      value: function componentWillMount() {
-	        if (!this.props.pageReducers.credentials) {
-	          this.context.router.push('/');
-	        }
-	      }
-	    }, {
-	      key: 'componentWillUpdate',
-	      value: function componentWillUpdate(nextProps) {
-	        if (!nextProps.pageReducers.credentials) {
-	          this.context.router.push('/');
-	        }
-	      }
-	    }, {
-	      key: 'render',
-	      value: function render() {
-	        return _react2.default.createElement(ComposedComponent, this.props);
-	      }
-	    }]);
-
-	    return Authentication;
-	  }(_react.Component);
-
-	  Authentication.contextTypes = {
-	    router: _react2.default.PropTypes.object
-	  };
-
-
-	  function mapStateToProps(state) {
-	    return { pageReducers: state.pageReducers };
-	  }
-
-	  return (0, _reactRedux.connect)(mapStateToProps)(Authentication);
-	};
-
-	var _react = __webpack_require__(6);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(40);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /***/ }
 /******/ ]);

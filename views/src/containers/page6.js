@@ -19,11 +19,11 @@ class Page6 extends Component {
         ]
 
         var E = [
-            {name: 'Very poor', value: 'VP'},
-            {name: 'Poor', value: 'PO'},
-            {name: 'Neither good nor bad', value: 'NGNB'},
+            {name: 'Excellent', value: 'EX'},
             {name: 'Good', value: 'GO'},
-            {name: 'Excellent', value: 'EX'}
+            {name: 'Neither good nor bad', value: 'NGNB'},
+            {name: 'Poor', value: 'PO'},
+            {name: 'Very poor', value: 'VP'}
         ]
 
         var A = [
@@ -44,14 +44,9 @@ class Page6 extends Component {
             { Q: 'The noise levels?', fieldValue: this.props.fields.noiseLevel, selectionType: 'E' },
             { Q: 'The furniture/ergonomics/comfort?', fieldValue: this.props.fields.furniture, selectionType: 'E' },
             { Q: 'The informal breakout and social spaces?', fieldValue: this.props.fields.informalBreakout, selectionType: 'E' },
-            { Q: 'The availability and choice of workspace?', fieldValue: this.props.fields.choiceOfWorkspace, selectionType:  'E'},
+            { Q: 'The availability of workspace?', fieldValue: this.props.fields.choiceOfWorkspace, selectionType:  'E'},
             { Q: 'The showers/changing /cycling facilities?', fieldValue: this.props.fields.showers, selectionType: 'E'},
-            { Q: 'The design of the current office  space creates an enjoyable environment to work in', fieldValue: this.props.fields.designOfCurrentOffice, selectionType: 'A' },
-            { Q: 'The design of the office enables me to work productively and supports my daily tasks', fieldValue: this.props.fields.designOfCurrentOfficeProductivity, selectionType: 'A' },
-            { Q: 'The design of the office promotes movement', fieldValue: this.props.fields.promotesMovement, selectionType: 'A' },
-            { Q: 'I am proud to bring visitors to the office', fieldValue: this.props.fields.proudVisitors, selectionType: 'A' },
-            { Q: 'I am able to access spaces with good natural light.', fieldValue: this.props.fields.naturalLight, selectionType: 'A' },
-            { Q: 'My current office space supports my physical wellbeing', fieldValue: this.props.fields.physicalWellbeing, selectionType: 'A' }
+            { Q: 'The design of the current office  space creates an enjoyable environment to work in', fieldValue: this.props.fields.designOfCurrentOffice, selectionType: 'A' }
 
         ]
         console.log(this.props.fields.satisfiedLondon);
@@ -65,14 +60,9 @@ class Page6 extends Component {
             noiseLevel,
             furniture,
             informalBreakout,
-            choiceOfWorkspace,
+            availableWorkspace,
             showers,
-            designOfCurrentOffice,
-            designOfCurrentOfficeProductivity,
-            promotesMovement,
-            proudVisitors,
-            naturalLight,
-            physicalWellbeing
+            designOfCurrentOffice
         }, handleSubmit} = this.props;
         return(
             <div className="container">
@@ -176,14 +166,9 @@ export default reduxForm({
         'noiseLevel',
         'furniture',
         'informalBreakout',
-        'choiceOfWorkspace',
+        'availableWorkspace',
         'showers',
-        'designOfCurrentOffice',
-        'designOfCurrentOfficeProductivity',
-        'promotesMovement',
-        'proudVisitors',
-        'naturalLight',
-        'physicalWellbeing'
+        'designOfCurrentOffice'
     ],
 	validate
 }, null, { page6Submit })(Page6);

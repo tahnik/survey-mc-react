@@ -7,7 +7,7 @@ class page18 extends Component {
         this.props.page18Submit(e);
     }
     render() {
-        const {fields: {designImpactCor, designImpactEnv, dedicatedSocialSpace, workspaceInteraction, currentWork3, futureWork3}, handleSubmit} = this.props;
+        const {fields: {designImpactCor, designImpactEnv, workspaceInteraction, currentWork3, futureWork3}, handleSubmit} = this.props;
         return(
              <div className="container">
             <div className="row">
@@ -24,10 +24,6 @@ class page18 extends Component {
                     <div className="form-group">
                         <label>What impact do you think the design of the current office has on its environmental sustainability?</label>
                         <textarea className="form-control" rows="3" { ...designImpactEnv }></textarea>
-                    </div>
-                    <div className="form-group">
-                        <label>Would you benefit from a dedicated social space?</label>
-                        <textarea className="form-control" rows="3" { ...dedicatedSocialSpace }></textarea>
                     </div>
                     <div className="form-group">
                         <label>What could improve workspace interaction?</label>
@@ -62,6 +58,6 @@ function validate(formProps) {
 
 export default reduxForm({
 	form: 'page18',
-	fields: ['designImpactCor', 'designImpactEnv', 'dedicatedSocialSpace', 'workspaceInteraction', 'currentWork3', 'futureWork3'],
+	fields: ['designImpactCor', 'designImpactEnv', 'workspaceInteraction', 'currentWork3', 'futureWork3'],
 	validate
 }, null, { page18Submit })(page18);
