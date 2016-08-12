@@ -51,6 +51,23 @@ function renderFullPage(html, initialState) {
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    	
+        <meta name="author" content="Tahnik Mustasin">
+        <meta name="Robots" content="INDEX,ALL" />
+        <meta name="YahooSeeker" content="INDEX, FOLLOW" />
+        <meta name="msnbot" content="INDEX, FOLLOW" />
+        <meta name="googlebot" content="INDEX, FOLLOW" />
+        <meta name="allow-search" content="yes" />
+        <meta name="revisit-after" content="daily" />
+        <meta name="Rating" content="General" />
+        <meta name="site" content="http://www.samaggisamagom.org" />
+        <meta name="distribution" content="global" />
+        <meta name="keywords" content="connected, survey, connectedsurvey">
+        <!--Setting some keyword for search engines -->
+        <meta name="description" content="Survey">
+        <!-- Setting a description -->
+        <meta name="language" content="English" />
+        <title>Connected Survey</title>
 
     	<!-- Bootstrap CSS -->
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css">
