@@ -5,7 +5,6 @@ import $ from 'jquery';
 
 class Page2 extends Component {
     onSubmit(e) {
-        console.log("Submitting");
         this.props.page2Submit(e);
     }
     render() {
@@ -21,63 +20,63 @@ class Page2 extends Component {
                                     <form className="form" onSubmit={handleSubmit((e) => this.onSubmit(e))}>
                                         <div className="form-check">
                                             <label className="form-check-label">
-                                                <input {...affliation} className="form-check-input" type="radio" value="GEN_CSS" checked={affliation.value === 'GEN_CSS'} />
+                                                <input {...affliation} className="form-check-input" type="radio" value="GEN_CSS" />
                                                 Generalist CSS
                                             </label>
                                         </div>
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio" value="Practice" checked={affliation.value === 'Practice'} />
+                                            <input {...affliation} className="form-check-input" type="radio" value="Practice" />
                                             Practice
                                           </label>
                                         </div>
                                         { affliation.value == "Practice" ? <div className="form-group"><label>Please specify</label><textarea className="form-control" rows="3" { ...specificDetails }></textarea></div> : <div></div> }
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio" value="MSO" checked={affliation.value === 'MSO'} />
+                                            <input {...affliation} className="form-check-input" type="radio" value="MSO" />
                                             MSO
                                           </label>
                                         </div>
                                         { affliation.value == "MSO" ? <div className="form-group"><label>Please specify</label><textarea className="form-control" rows="3" { ...specificDetails }></textarea></div> : <div></div> }
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio"  value="PD_Learning_HR" checked={affliation.value === 'PD_Learning_HR'} />
+                                            <input {...affliation} className="form-check-input" type="radio"  value="PD_Learning_HR" />
                                             PD/Learning/HR
                                           </label>
                                         </div>
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio"  value="FABP" checked={affliation.value === 'FABP'} />
+                                            <input {...affliation} className="form-check-input" type="radio"  value="FABP" />
                                             Finance/Accouting/Benefits/Payroll
                                           </label>
                                         </div>
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio"  value="COMMS" checked={affliation.value === 'COMMS'} />
+                                            <input {...affliation} className="form-check-input" type="radio"  value="COMMS" />
                                             Comms (internal/external)
                                           </label>
                                         </div>
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio"  value="EA" checked={affliation.value === 'EA'} />
+                                            <input {...affliation} className="form-check-input" type="radio"  value="EA" />
                                             EA
                                           </label>
                                         </div>
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio"  value="OS" checked={affliation.value === 'OS'} />
+                                            <input {...affliation} className="form-check-input" type="radio"  value="OS" />
                                             Office services (IT, facilities, repro)
                                           </label>
                                         </div>
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio"  value="FF" checked={affliation.value === 'FF'} />
+                                            <input {...affliation} className="form-check-input" type="radio"  value="FF" />
                                             Firm functions (Audit, legal, risk, tax, MIO, MPS, Travel, VG, Firm IT)
                                           </label>
                                         </div>
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...affliation} className="form-check-input" type="radio"  value="Other" checked={affliation.value === 'Other'} />
+                                            <input {...affliation} className="form-check-input" type="radio"  value="Other" />
                                             Other
                                           </label>
                                         </div>

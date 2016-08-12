@@ -25,7 +25,8 @@ class page13 extends Component {
             <div className="col-md-8 offset-xs-2">
                 <h4 style={{ marginBottom: 20 }}>What proportion of your client meetings are:</h4>
                 <h5 style={{color: 'skyblue', marginBottom: 20}}>Formal meetings or workshops<span style={{color: '#b2b2b2'}} > | Informal working sessions</span></h5>
-                <Rcslider onAfterChange={(e) => this.setState({ RCValue: e })} />
+                <Rcslider onChange={(e) => this.setState({ RCValue: e })} />
+                <h4 style={{ marginTop: '1em' }}>{ `${this.state.RCValue}%` }</h4>
                 <div style={{ marginTop: 20 }} className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>
                 </div>

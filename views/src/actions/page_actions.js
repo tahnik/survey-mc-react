@@ -172,27 +172,7 @@ export function page18Submit(props) {
     }
 }
 
-export function page19Submit(props) {
-    crypto.randomBytes(5, (err, buf) => {
-        if (err) {
-            console.log(err)
-        }else {
-            var userRandomNumber = buf.toString('hex');
-            const userDataurl = `https://survey-6242b.firebaseio.com/userData.json`;
-            const usersurl = `https://survey-6242b.firebaseio.com/users.json`;
-            var email = props.credentials.email;
-            var users = {
-                [userRandomNumber]: email
-            }
-            var userData = {
-                [userRandomNumber]: props
-            }
-            //console.log(props);
-            var userRequest = axios.patch(usersurl, users);
-            var userDataRequest = axios.patch(userDataurl, userData);
-        }
-    })
-
+export function page19Submit() {
     return {
         type: "FINISH"
     }

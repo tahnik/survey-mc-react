@@ -46,13 +46,13 @@ class page16 extends Component {
                                     <h4>Would you prefer</h4>
                                     <div className="form-check">
                                       <label className="form-check-label">
-                                        <input {...e.id} className="form-check-input" type="radio" value={e.id.name} />
+                                        <input {...e.id} className="form-check-input" type="radio" value={e.one} />
                                         { e.one }
                                       </label>
                                     </div>
                                     <div className="form-check">
                                       <label className="form-check-label">
-                                        <input {...e.id} className="form-check-input" type="radio" value={e.id.name} />
+                                        <input {...e.id} className="form-check-input" type="radio" value={e.two} />
                                         { e.two }
                                       </label>
                                     </div>

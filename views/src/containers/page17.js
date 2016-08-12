@@ -31,7 +31,6 @@ class page17 extends Component {
             { Q: 'The office is reflective of the firmâ€™s culture', fieldValue: this.props.fields.twelve, selectionType: 'E'}
 
         ]
-        console.log(this.props.fields.satisfiedLondon);
         const {fields: {one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve}, handleSubmit} = this.props;
         return(
             <div className="container">
@@ -51,7 +50,7 @@ class page17 extends Component {
                                     return (
                                         <div className="form-check">
                                           <label className="form-check-label">
-                                            <input {...e.fieldValue} className="form-check-input" type="radio" value={v.value} />
+                                            <input {...e.fieldValue} className="form-check-input" type="radio" value={v.name} />
                                             { v.name }
                                           </label>
                                         </div>

@@ -74,7 +74,6 @@ class Page8 extends Component {
     deleteDropped(ev) {
         var data = ev.dataTransfer.getData("text");
         var Node = document.getElementById(data);
-        console.log(Node);
     }
     render() {
         const {fields: {whatAreYou}, handleSubmit} = this.props;

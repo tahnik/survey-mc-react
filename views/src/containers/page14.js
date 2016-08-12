@@ -25,7 +25,8 @@ class page14 extends Component {
             <div className="col-md-8 offset-xs-2">
                 <h5 style={{ marginBottom: 20 }}>Of the time you spend working individually, what proportion of the work is:</h5>
                 <h5 style={{color: 'skyblue', marginBottom: 20}}>Complex work requiring concentration<span style={{color: '#b2b2b2'}} > | Routine or administrative work</span></h5>
-                <Rcslider onAfterChange={(e) => this.setState({ RCValue: e })} />
+                <Rcslider onChange={(e) => this.setState({ RCValue: e })} />
+                <h4 style={{ marginTop: '1em' }}>{ `${this.state.RCValue}%` }</h4>
                 <div style={{ marginTop: 20 }} className="col-md-12">
                     <button onClick={(e) => this.onSubmit(e)} className="btn btn-primary">Next</button>
                 </div>

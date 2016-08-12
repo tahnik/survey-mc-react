@@ -1,8 +1,11 @@
 .form-group label{
-   color: black;
+    color: black !important;
 }
 .radio label{
-     color: black;
+    color: black !important;
+}
+.form-check-label{
+    color: black !important;
 }
 .customTop{
     height: 250px;

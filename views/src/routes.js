@@ -25,6 +25,8 @@ import Page18 from './containers/page18';
 import Page19 from './containers/page19';
 import Page20 from './containers/page20';
 import Page21 from './containers/page21';
+import Finish from './containers/finish';
+
 
 export default (
     <Router history={ browserHistory } >
@@ -51,6 +53,7 @@ export default (
             <Route path="/Page19" component={require_email(Page19)} />
             <Route path="/Page20" component={Page20} />
             <Route path="/Page21" component={Page21} />
+            <Route path="/finish" component={Finish} />
 
         </Route>
     </Router>

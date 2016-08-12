@@ -19,7 +19,6 @@ class Intro extends Component {
             this.setState({ users: usersJSON })
         })
         .catch(function (error) {
-            console.log(error);
         });
     }
     onSubmit(e) {
@@ -48,16 +47,18 @@ class Intro extends Component {
                                             <div className="col-md-9">
                                                 <input type="email" className="form-control" placeholder="name@example.com" {...email}/>
                                             </div>
-                                            {email.touched && email.error && <div className="col-md-8 col-md-offset-4 form-control-feedback">{email.error}</div>}
+                                        </div>
+                                        <div className="row">
+                                            {email.touched && email.error && <div className="col-md-8 col-md-offset-2 form-control-feedback">{email.error}</div>}
                                         </div>
                                         <div className="form-group">
                                             <label className="col-md-2 control-label">Password</label>
                                             <div className="col-md-9">
                                                 <input type="password" className="form-control" placeholder="password" {...password}/>
                                             </div>
-                                            {password.touched && password.error && <div className="col-md-8 col-md-offset-4 form-control-feedback">{password.error}</div>}
                                         </div>
-                                            <div className="form-group">
+                                        {password.touched && password.error && <div className="col-md-8 col-md-offset-2 form-control-feedback">{password.error}</div>}
+                                        <div className="form-group">
                                                 <div className="col-md-12">
                                                     <button type="submit" className="btn btn-primary">Next</button>
                                                 </div>
@@ -76,6 +77,7 @@ class Intro extends Component {
 function validate(formProps) {
 	const errors = {};
 	const PASSWORD_VALIDATOR_REGEX = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    const EMAIL_VALIDATOR_REGEX = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
 	if (!formProps.password) {
 		errors.password = 'Please enter a password';
@@ -85,6 +87,8 @@ function validate(formProps) {
 
     if(!formProps.email) {
         errors.email = "Please enter an email";
+    }else if(EMAIL_VALIDATOR_REGEX.exec(formProps.email) === null) {
+        errors.email = "Email is not valid";
     }
 
 	return errors;

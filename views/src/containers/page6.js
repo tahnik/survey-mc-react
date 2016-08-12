@@ -6,7 +6,6 @@ import { page6Submit } from '../actions/page_actions';
 
 class Page6 extends Component {
     onSubmit(e) {
-        console.log(this.props.fields.satisfiedLondon);
         this.props.page6Submit(e);
     }
     render() {
@@ -38,18 +37,17 @@ class Page6 extends Component {
             { Q: 'How satisfied are you with London office?' , fieldValue: this.props.fields.satisfiedLondon , selectionType: 'S' },
             { Q: 'What gets the best out of you in London office?', fieldValue: this.props.fields.bestOutOfLondonOffice, selectionType: 'FT' },
             { Q: 'What would you change about the office?', fieldValue: this.props.fields.changeAboutOffice, selectionType: 'FT' },
-            { Q: 'The variety of workspaces available?', fieldValue: this.props.fields.workspaceVariety, selectionType: 'E' },
+            { Q: 'The variety of workspaces available?', fieldValue: this.props.fields.workspaceVariety, selectionType: 'E', label: 'How would you rate the following in the london office?' },
+            { Q: 'The availability of workspace?', fieldValue: this.props.fields.choiceOfWorkspace, selectionType:  'E'},
             { Q: 'The lighting?', fieldValue: this.props.fields.lighting, selectionType: 'E' },
             { Q: 'The air quality?', fieldValue: this.props.fields.airQuality, selectionType: 'E' },
             { Q: 'The noise levels?', fieldValue: this.props.fields.noiseLevel, selectionType: 'E' },
             { Q: 'The furniture/ergonomics/comfort?', fieldValue: this.props.fields.furniture, selectionType: 'E' },
             { Q: 'The informal breakout and social spaces?', fieldValue: this.props.fields.informalBreakout, selectionType: 'E' },
-            { Q: 'The availability of workspace?', fieldValue: this.props.fields.choiceOfWorkspace, selectionType:  'E'},
             { Q: 'The showers/changing /cycling facilities?', fieldValue: this.props.fields.showers, selectionType: 'E'},
             { Q: 'The design of the current office  space creates an enjoyable environment to work in', fieldValue: this.props.fields.designOfCurrentOffice, selectionType: 'A' }
 
         ]
-        console.log(this.props.fields.satisfiedLondon);
         const {fields: {
             satisfiedLondon,
             bestOutOfLondonOffice,
@@ -82,7 +80,7 @@ class Page6 extends Component {
                                         return (
                                             <div className="form-check">
                                               <label className="form-check-label">
-                                                <input {...e.fieldValue} className="form-check-input" type="radio" value={v.value} />
+                                                <input {...e.fieldValue} className="form-check-input" type="radio" value={v.name} />
                                                 { v.name }
                                               </label>
                                             </div>
@@ -93,12 +91,13 @@ class Page6 extends Component {
                         }else if(e.selectionType == 'E') {
                             return(
                                 <div>
+                                    { e.label ? <h4> { e.label }</h4> : <div></div>}
                                     { e.Q }
                                     { E.map((v) => {
                                         return (
                                             <div className="form-check">
                                               <label className="form-check-label">
-                                                <input {...e.fieldValue} className="form-check-input" type="radio" value={v.value} />
+                                                <input {...e.fieldValue} className="form-check-input" type="radio" value={v.name} />
                                                 { v.name }
                                               </label>
                                             </div>
@@ -114,7 +113,7 @@ class Page6 extends Component {
                                         return (
                                             <div className="form-check">
                                               <label className="form-check-label">
-                                                <input {...e.fieldValue} className="form-check-input" type="radio" value={v.value} />
+                                                <input {...e.fieldValue} className="form-check-input" type="radio" value={v.name} />
                                                 { v.name }
                                               </label>
                                             </div>
