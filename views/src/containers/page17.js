@@ -19,8 +19,8 @@ class page17 extends Component {
         var SATISFACTION = [
             { Q: 'The design of the current office space creates an enjoyable environment to work in', fieldValue: this.props.fields.one, selectionType: 'E' },
             { Q: 'The design of the office enables me to work productively and supports my daily tasks', fieldValue: this.props.fields.two, selectionType: 'E' },
-            { Q: 'I can focus when Iâ€™m in the office' , fieldValue: this.props.fields.three , selectionType: 'S' },
-            { Q: 'I can collaborate with colleagues when Iâ€™m in the office', fieldValue: this.props.fields.four, selectionType: 'FT' },
+            { Q: 'I can focus when I\'m in the office' , fieldValue: this.props.fields.three , selectionType: 'S' },
+            { Q: 'I can collaborate with colleagues when I\'m in the office', fieldValue: this.props.fields.four, selectionType: 'FT' },
             { Q: 'I can be creative in the office', fieldValue: this.props.fields.five, selectionType: 'FT' },
             { Q: 'I feel physically comfortable in the office', fieldValue: this.props.fields.six, selectionType: 'E' },
             { Q: 'The design of the office supports mobility', fieldValue: this.props.fields.seven, selectionType: 'E' },
