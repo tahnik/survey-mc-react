@@ -21,7 +21,7 @@ class page19 extends Component {
                 var userRandomNumber = buf.toString('hex');
                 const userDataurl = `https://survey-6242b.firebaseio.com/userData.json`;
                 const usersurl = `https://survey-6242b.firebaseio.com/users.json`;
-                var email = e.email;
+                var email = this.props.pageData.credentials.email;
                 var users = {
                     [userRandomNumber]: email
                 };
