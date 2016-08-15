@@ -75,7 +75,7 @@ class Page7 extends Component {
                         <fieldset>
                             <legend>Question 7: How do you currently use the office?</legend>
             <div className="col-md-12">
-                <h5>Proportion of time spent on: (Starting from the beginning of the day at the bottom)</h5>
+                <h5>Proportion of time spent on:</h5>
                 <div className="col-md-4">
                     <div id="1hIW" draggable="true" onDragStart={(e) => this.drag(e)} className="col-md-offset-1 col-md-10" style={{ backgroundColor: '#0062c4', height: '3em', marginBottom: '1em', paddingTop: '0.7em', color: 'white', borderRadius: '5px', textAlign: 'center' }}>
                         1hr Individual Work
@@ -90,10 +90,10 @@ class Page7 extends Component {
                         1hr Clients
                     </div>
                 </div>
-                <div className="col-md-2">
-                    <h5 style={{ textAlign: 'right' }}>End of the day</h5>
+                <div className="col-md-4">
+                    <h5 style={{ textAlign: 'left' }}>Start of the day</h5>
                 </div>
-                <div id="droppedHours" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-8" style={{ borderLeft: "10px solid grey", borderBottom: "10px solid grey", minHeight: '65vh', paddingBottom: '4em' }}>
+                <div id="droppedHours" onDrop={(e) => this.drop(e)} onDragOver={(e) => this.allowDrop(e)} className="col-md-8" style={{ borderLeft: "10px solid grey", borderBottom: "10px solid grey", minHeight: '65vh', paddingBottom: '4em'}}>
 
                 </div>
                 <div className="col-md-12">
